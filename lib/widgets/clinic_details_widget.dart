@@ -112,24 +112,21 @@ class _ClinicDetailsState extends State<ClinicDetails> {
   void initState() {
     super.initState();
     rowData = [
-      RowData(label: 'Name : ', value: widget.getClinicModel.name ?? ""),
+      RowData(label: 'Name : ', value: widget.getClinicModel.name),
       RowData(
           label: 'Google Maps Link : ',
-          value: widget.getClinicModel.googleMapsLink ?? ""),
-      RowData(label: 'Address : ', value: widget.getClinicModel.address ?? ""),
-      RowData(
-          label: 'Owner Name : ', value: widget.getClinicModel.ownerName ?? ""),
+          value: widget.getClinicModel.googleMapsLink),
+      RowData(label: 'Address : ', value: widget.getClinicModel.address),
+      RowData(label: 'Owner Name : ', value: widget.getClinicModel.ownerName),
       RowData(
           label: 'Specialization : ',
-          value: widget.getClinicModel.specialization ?? ""),
-      RowData(label: 'Code : ', value: widget.getClinicModel.code ?? ""),
-      RowData(label: 'Email : ', value: widget.getClinicModel.email ?? ""),
+          value: widget.getClinicModel.specialization),
+      RowData(label: 'Code : ', value: widget.getClinicModel.code),
+      RowData(label: 'Email : ', value: widget.getClinicModel.email),
+      RowData(label: 'Password : ', value: widget.getClinicModel.password),
+      RowData(label: 'Role : ', value: widget.getClinicModel.role),
       RowData(
-          label: 'Password : ', value: widget.getClinicModel.password ?? ""),
-      RowData(label: 'Role : ', value: widget.getClinicModel.role ?? ""),
-      RowData(
-          label: 'phone : ',
-          value: widget.getClinicModel.userPhoneNumbers[0] ?? ""),
+          label: 'phone : ', value: widget.getClinicModel.userPhoneNumbers[0]),
       RowData(
           label: 'Enabled : ', value: widget.getClinicModel.enabled.toString()),
     ];
