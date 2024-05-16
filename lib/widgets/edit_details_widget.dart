@@ -3,18 +3,19 @@ import 'package:medicory/widgets/constants.dart';
 
 class EditDetails extends StatelessWidget {
   const EditDetails({
-    super.key,
+    Key? key,
     required this.label,
     required this.controller,
     required this.onchange,
-    required this.readonly,
+    this.readonly,
     required this.hintText,
-  });
+  }) : super(key: key);
+
   final String label;
   final String hintText;
   final TextEditingController controller;
   final Function(dynamic) onchange;
-  final bool readonly;
+  final bool? readonly;
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +42,7 @@ class EditDetails extends StatelessWidget {
                       border: Border.all(color: Colors.blue, width: 1.2),
                     ),
                     child: TextField(
-                      readOnly: readonly,
+                      readOnly: readonly ?? false,
                       onChanged: onchange,
                       controller: controller,
                       decoration: InputDecoration(

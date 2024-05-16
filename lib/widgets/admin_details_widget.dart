@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import 'package:medicory/models/general_model.dart';
 import 'package:medicory/models/get_admin_model.dart';
+import 'package:medicory/views/edit_admin_view.dart';
 import 'package:medicory/widgets/build_divider_widget.dart';
 import 'package:medicory/widgets/build_row_widget.dart';
 import 'package:medicory/widgets/button_widget.dart';
@@ -68,11 +70,40 @@ class _AdminDetailsState extends State<AdminDetails> {
                           ],
                         );
                       } else {
-                        return Button(
-                          onPressed: () {
-                            // Handle edit action
-                          },
-                          text: "Edit",
+                        return Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Button(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) {
+                                      return EditAdminView(
+                                        getAdminModel: widget.gatAdminModel,
+                                      );
+                                    },
+                                  ),
+                                );
+                              },
+                              text: "Edit",
+                            ),
+                            SizedBox(
+                              width: 35,
+                            ),
+                            Button(
+                              onPressed: () async {
+                                await http.delete(
+                                  Uri.parse(
+                                      "http://10.0.2.2:8081/admin/admins/id/${widget.gatAdminModel.id}"),
+                                );
+
+                                print("SUCCESS");
+                              },
+                              color: Colors.red,
+                              text: "Delete",
+                            ),
+                          ],
                         );
                       }
                     },

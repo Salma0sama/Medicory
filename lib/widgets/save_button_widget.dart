@@ -8,20 +8,17 @@ class SaveButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 10),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          SizedBox(
-            width: 120,
-            child: Button(
-              onPressed: onPressed,
-              text: text,
-            ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        SizedBox(
+          width: 120,
+          child: Button(
+            onPressed: onPressed,
+            text: text,
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

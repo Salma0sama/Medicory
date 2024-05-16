@@ -1,45 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:medicory/models/general_model.dart';
-import 'package:medicory/models/get_owner_model.dart';
-import 'package:medicory/services/edit_owner_service.dart';
+import 'package:medicory/models/get_doctor_model.dart';
+import 'package:medicory/services/edit_doctor_service.dart';
 import 'package:medicory/widgets/constants.dart';
 import 'package:medicory/widgets/custom_dropdownbutton_widget.dart';
 import 'package:medicory/widgets/edit_details_widget.dart';
 import 'package:medicory/widgets/save_button_widget.dart';
 
-class EditOwnerView extends StatefulWidget {
-  const EditOwnerView({
+class EditDoctorView extends StatefulWidget {
+  const EditDoctorView({
     Key? key,
-    required this.getOwnerModel,
-    required this.relativePhoneNumber,
-    required this.userDetail,
-    required this.userPhoneNumber,
+    required this.getDoctorModel,
   }) : super(key: key);
 
-  final GetOwnerModel getOwnerModel;
-  final RelativePhoneNumber relativePhoneNumber;
-  final UserDetail userDetail;
-  final UserPhoneNumber userPhoneNumber;
+  final GetDoctorModel getDoctorModel;
 
   @override
-  State<EditOwnerView> createState() => _EditOwnerViewState();
+  State<EditDoctorView> createState() => _EditDoctorViewState();
 }
 
-class _EditOwnerViewState extends State<EditOwnerView> {
-  late GetOwnerModel getOwnerModel;
-  late RelativePhoneNumber relativePhoneNumber;
-  late UserDetail userDetail;
-  late UserPhoneNumber userPhoneNumber;
+class _EditDoctorViewState extends State<EditDoctorView> {
+  late GetDoctorModel getDoctorModel;
 
   late TextEditingController _firstNameController;
   late TextEditingController _middleNameController;
   late TextEditingController _lastNameController;
-  late TextEditingController _dateOfBirthController;
-  late TextEditingController _addressController;
+  late TextEditingController _specializationController;
+  late TextEditingController _licenceNumberController;
   late TextEditingController _nationalIdController;
-  late TextEditingController _jobController;
-  late TextEditingController _relativePhoneController;
-  late TextEditingController _relativeRelationController;
   late TextEditingController _userCodeController;
   late TextEditingController _userEmailController;
   late TextEditingController _userPasswordController;
@@ -47,78 +35,59 @@ class _EditOwnerViewState extends State<EditOwnerView> {
   late TextEditingController _userPhoneNumberController;
 
   String? valueChooseGender;
-  String? valueChooseBloodType;
   String? valueChooseMaritalStatus;
 
   String? firstName,
       middleName,
       lastName,
+      specialization,
+      licenceNumber,
       gender,
-      dateOfBirth,
-      address,
-      bloodType,
       maritalStatus,
-      job,
       code,
       email,
       password,
       role,
-      phone,
-      relativePhone,
-      relativeRelation;
+      phone;
 
   int? nationalId;
   bool? enabled;
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  List<String> genderOptions = ["MALE", "FEMALE"]; // Data from API
-  List<String> bloodTypeOptions = [
-    "A_POSITIVE",
-    "A_NEGATIVE",
-    "B_POSITIVE",
-    "B_NEGATIVE",
-    "AB_POSITIVE",
-    "AB_NEGATIVE",
-    "O_POSITIVE",
-    "O_NEGATIVE"
-  ]; // Data from API
+  List<String> genderOptions = ["MALE", "FEMALE"];
+
   List<String> maritalStatusOptions = [
     "SINGLE",
     "MARRIED",
     "DIVORCED",
     "WIDOWED"
-  ]; // Data from API
+  ]; // Data from API// Data from API
 
   @override
   void initState() {
     super.initState();
-    getOwnerModel = widget.getOwnerModel;
-    relativePhoneNumber = widget.relativePhoneNumber;
-    userDetail = widget.userDetail;
-    userPhoneNumber = widget.userPhoneNumber;
+    getDoctorModel = widget.getDoctorModel;
 
-    _firstNameController = TextEditingController(text: getOwnerModel.firstName);
+    _firstNameController =
+        TextEditingController(text: getDoctorModel.firstName);
     _middleNameController =
-        TextEditingController(text: getOwnerModel.middleName);
-    _lastNameController = TextEditingController(text: getOwnerModel.lastName);
-    _dateOfBirthController =
-        TextEditingController(text: getOwnerModel.dateOfBirth);
-    _addressController = TextEditingController(text: getOwnerModel.address);
+        TextEditingController(text: getDoctorModel.middleName);
+    _lastNameController = TextEditingController(text: getDoctorModel.lastName);
+    _specializationController =
+        TextEditingController(text: getDoctorModel.specialization);
+    _licenceNumberController =
+        TextEditingController(text: getDoctorModel.licenceNumber);
     _nationalIdController =
-        TextEditingController(text: '${getOwnerModel.nationalId}');
-    _jobController = TextEditingController(text: getOwnerModel.job);
-    _relativePhoneController =
-        TextEditingController(text: relativePhoneNumber.phone);
-    _relativeRelationController =
-        TextEditingController(text: relativePhoneNumber.relation);
-    _userCodeController = TextEditingController(text: userDetail.code);
-    _userEmailController = TextEditingController(text: userDetail.email);
-    _userPasswordController = TextEditingController(text: userDetail.password);
-    _userRoleController = TextEditingController(text: userDetail.role);
+        TextEditingController(text: '${getDoctorModel.nationalId}');
+    _userCodeController = TextEditingController(text: getDoctorModel.code);
+    _userEmailController = TextEditingController(text: getDoctorModel.email);
+    _userPasswordController =
+        TextEditingController(text: getDoctorModel.password);
+    _userRoleController = TextEditingController(text: getDoctorModel.role);
     _userPhoneNumberController =
-        TextEditingController(text: userPhoneNumber.phone);
-    enabled = userDetail.enabled;
+        TextEditingController(text: getDoctorModel.userPhoneNumbers[0]);
+    enabled = getDoctorModel.enabled;
   }
 
   @override
@@ -127,7 +96,7 @@ class _EditOwnerViewState extends State<EditOwnerView> {
       appBar: AppBar(
         backgroundColor: kPrimaryColor,
         title: Text(
-          "Edit Owner",
+          "Edit Doctor",
           style: TextStyle(
             color: kTextColor,
           ),
@@ -165,48 +134,33 @@ class _EditOwnerViewState extends State<EditOwnerView> {
                 },
                 hintText: 'Enter Last Name',
               ),
+              EditDetails(
+                label: "Specialization :",
+                controller: _specializationController,
+                onchange: (data) {
+                  specialization = data;
+                },
+                hintText: 'Enter Specialization',
+              ),
+              EditDetails(
+                label: "Licence Number :",
+                controller: _licenceNumberController,
+                onchange: (data) {
+                  licenceNumber = data;
+                },
+                hintText: 'Enter Licence Number',
+              ),
               SliverToBoxAdapter(
                 child: CustomDropdownButton(
                   addDropdownButton: AddDropdownButton(
                     label: "Gender :",
-                    hint: getOwnerModel.gender,
+                    hint: getDoctorModel.gender,
                     items: genderOptions,
                     value: valueChooseGender,
                     onChanged: (data) {
                       setState(() {
                         valueChooseGender =
                             data; // Update state variable directly
-                      });
-                    },
-                  ),
-                ),
-              ),
-              EditDetails(
-                label: "Date Of Birth :",
-                controller: _dateOfBirthController,
-                onchange: (data) {
-                  dateOfBirth = data;
-                },
-                hintText: 'Enter Date Of Birth',
-              ),
-              EditDetails(
-                label: "Address :",
-                controller: _addressController,
-                onchange: (data) {
-                  address = data;
-                },
-                hintText: 'Enter Address',
-              ),
-              SliverToBoxAdapter(
-                child: CustomDropdownButton(
-                  addDropdownButton: AddDropdownButton(
-                    label: "Blood Type :",
-                    hint: getOwnerModel.bloodType,
-                    items: bloodTypeOptions,
-                    value: valueChooseBloodType,
-                    onChanged: (data) {
-                      setState(() {
-                        valueChooseBloodType = data;
                       });
                     },
                   ),
@@ -225,7 +179,7 @@ class _EditOwnerViewState extends State<EditOwnerView> {
                 child: CustomDropdownButton(
                   addDropdownButton: AddDropdownButton(
                     label: "Marital Status :",
-                    hint: getOwnerModel.maritalStatus,
+                    hint: getDoctorModel.maritalStatus,
                     items: maritalStatusOptions,
                     value: valueChooseMaritalStatus,
                     onChanged: (data) {
@@ -237,70 +191,46 @@ class _EditOwnerViewState extends State<EditOwnerView> {
                 ),
               ),
               EditDetails(
-                label: "Job :",
-                controller: _jobController,
-                onchange: (data) {
-                  job = data;
-                },
-                hintText: 'Enter Job',
-              ),
-              EditDetails(
-                label: "Relative Phone :",
-                controller: _relativePhoneController,
-                onchange: (data) {
-                  relativePhone = data;
-                },
-                hintText: 'Enter Relative Phone',
-              ),
-              EditDetails(
-                label: "Relative Relation :",
-                controller: _relativeRelationController,
-                onchange: (data) {
-                  relativeRelation = data;
-                },
-                hintText: 'Enter Relative Relation',
-              ),
-              EditDetails(
-                label: "User Code :",
+                label: "Code :",
                 controller: _userCodeController,
                 onchange: (data) {
                   code = data;
                 },
                 readonly: true,
-                hintText: 'Enter User Code',
+                hintText: 'Enter Code',
               ),
               EditDetails(
-                label: "User Email :",
+                label: "Email :",
                 controller: _userEmailController,
                 onchange: (data) {
                   email = data;
                 },
-                hintText: 'Enter User Email',
+                hintText: 'Enter Email',
               ),
               EditDetails(
-                label: "User Password :",
+                label: "Password :",
                 controller: _userPasswordController,
                 onchange: (data) {
                   password = data;
                 },
-                hintText: 'Enter User Password',
+                hintText: 'Enter Password',
               ),
               EditDetails(
-                label: "User Role :",
+                label: "Role :",
                 controller: _userRoleController,
                 onchange: (data) {
                   role = data;
                 },
                 readonly: true,
-                hintText: 'Enter User Role',
+                hintText: 'Enter Role',
               ),
               EditDetails(
-                label: "User Phone :",
+                label: "Phone :",
                 controller: _userPhoneNumberController,
                 onchange: (data) {
                   phone = data;
                 },
-                hintText: 'Enter User Phone',
+                hintText: 'Enter Phone',
               ),
               SliverToBoxAdapter(
                 child: Padding(
@@ -366,41 +296,28 @@ class _EditOwnerViewState extends State<EditOwnerView> {
 
   void submitData(BuildContext context) async {
     try {
-      final editOwnerService = EditOwnerService();
-      GetOwnerModel owner = await editOwnerService.EditOwner(
-        id: getOwnerModel.id,
-        firstName: firstName ?? getOwnerModel.firstName,
-        middleName: middleName ?? getOwnerModel.middleName,
-        lastName: lastName ?? getOwnerModel.lastName,
-        gender: valueChooseGender ?? getOwnerModel.gender,
-        dateOfBirth: dateOfBirth ?? getOwnerModel.dateOfBirth,
-        address: address ?? getOwnerModel.address,
-        bloodType: valueChooseBloodType ?? getOwnerModel.bloodType,
-        nationalId: int.parse(getOwnerModel.nationalId.toString()),
-        maritalStatus: valueChooseMaritalStatus ?? getOwnerModel.maritalStatus,
-        job: job ?? getOwnerModel.job,
-        relativePhoneNumbers: [
-          RelativePhoneNumber(
-              id: widget.relativePhoneNumber.id,
-              phone: relativePhone ?? widget.relativePhoneNumber.phone,
-              relation: relativeRelation ?? widget.relativePhoneNumber.relation)
-        ],
-        user: UserDetail(
-          code: widget.userDetail.code,
-          email: email ?? widget.userDetail.email,
-          password: password ?? widget.userDetail.password,
-          role: widget.userDetail.role,
-          userPhoneNumbers: [
-            UserPhoneNumber(
-                id: widget.userPhoneNumber.id,
-                phone: phone ?? widget.userPhoneNumber.phone)
-          ],
-          enabled: enabled ?? widget.userDetail.enabled,
-        ),
+      final editDoctorService = EditDoctorService();
+      GetDoctorModel doctor = await editDoctorService.EditDoctor(
+        id: getDoctorModel.id,
+        firstName: firstName ?? getDoctorModel.firstName,
+        middleName: middleName ?? getDoctorModel.middleName,
+        lastName: lastName ?? getDoctorModel.lastName,
+        licenceNumber: licenceNumber ?? getDoctorModel.licenceNumber,
+        specialization: specialization ?? getDoctorModel.specialization,
+        gender: valueChooseGender ?? getDoctorModel.gender,
+        nationalId:
+            nationalId ?? int.parse(getDoctorModel.nationalId.toString()),
+        maritalStatus: valueChooseMaritalStatus ?? getDoctorModel.maritalStatus,
+        code: code ?? getDoctorModel.code,
+        email: email ?? getDoctorModel.email,
+        password: password ?? getDoctorModel.password,
+        role: role ?? getDoctorModel.role,
+        userPhoneNumbers: [phone ?? getDoctorModel.userPhoneNumbers[0]],
+        enabled: enabled ?? getDoctorModel.enabled,
       );
-      print("Owner edit successfully");
+      print("Doctor edit successfully");
     } catch (error) {
-      print("Failed to edit owner: $error");
+      print("Failed to edit Doctor: $error");
     }
   }
 }

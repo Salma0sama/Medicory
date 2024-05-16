@@ -51,13 +51,16 @@ class GetOwnerModel {
 }
 
 class RelativePhoneNumber {
+  final int id;
   final String phone;
   final String relation;
 
-  RelativePhoneNumber({required this.phone, required this.relation});
+  RelativePhoneNumber(
+      {required this.id, required this.phone, required this.relation});
 
   factory RelativePhoneNumber.fromJson(Map<String, dynamic> json) {
     return RelativePhoneNumber(
+      id: json['id'] as int,
       phone: json['phone'] as String,
       relation: json['relation'] as String,
     );
@@ -65,6 +68,7 @@ class RelativePhoneNumber {
 
   Map<String, dynamic> toJson() {
     return {
+      'id': id,
       'phone': phone,
       'relation': relation,
     };
@@ -114,18 +118,21 @@ class UserDetail {
 }
 
 class UserPhoneNumber {
+  final int id;
   final String phone;
 
-  UserPhoneNumber({required this.phone});
+  UserPhoneNumber({required this.id, required this.phone});
 
   factory UserPhoneNumber.fromJson(Map<String, dynamic> json) {
     return UserPhoneNumber(
+      id: json['id'] as int,
       phone: json['phone'] as String,
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
+      'id': id,
       'phone': phone,
     };
   }

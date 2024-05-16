@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class ButtonDetails {
   final String Text;
   final Function() Navigation;
@@ -5,14 +7,16 @@ class ButtonDetails {
 }
 
 class AddTextField {
+  final Function(String) onchange;
   final String Label;
   final String hintText;
-  final Function(dynamic) onchange;
+  final TextInputType? keyboardType; // Define keyboardType property
 
-  const AddTextField({
+  AddTextField({
     required this.onchange,
     required this.Label,
     required this.hintText,
+    this.keyboardType, // Make keyboardType optional
   });
 }
 

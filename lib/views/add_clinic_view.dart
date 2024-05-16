@@ -4,9 +4,7 @@ import 'package:medicory/models/general_model.dart';
 import 'package:medicory/services/add_new_clinic_service.dart';
 import 'package:medicory/widgets/button_widget.dart';
 import 'package:medicory/widgets/constants.dart';
-import 'package:medicory/widgets/custom_dropdownbutton_widget.dart';
 import 'package:medicory/widgets/custom_textfield_widget.dart';
-import 'package:medicory/widgets/enable_radiobutton_widget.dart';
 
 class AddClinicView extends StatefulWidget {
   const AddClinicView({Key? key});
@@ -96,41 +94,13 @@ class _AddClinicViewState extends State<AddClinicView> {
                         hintText: "Email",
                       ),
                     ),
-                    CustomDropdownButton(
-                      addDropdownButton: AddDropdownButton(
-                          label: "Role :",
-                          hint: "Select Role",
-                          items: [
-                            "HOSPITAL",
-                            "CLINIC",
-                            "PHARMACY",
-                            "LAB",
-                            "OWNER",
-                            "ADMIN",
-                            "DOCTOR",
-                            "EMERGENCY"
-                          ],
-                          value: valueChooseRole,
-                          onChanged: (data) {
-                            setState(() {
-                              valueChooseRole = data;
-                            });
-                          }),
-                    ),
                     CustomTextField(
                       addTextField: AddTextField(
                         onchange: (data) => setState(() => phone = data),
                         Label: "User Phone :",
                         hintText: "User Phone",
+                        keyboardType: TextInputType.number,
                       ),
-                    ),
-                    EnableRadioRow(
-                      valueChooseEnabled: valueChooseEnabled,
-                      onChanged: (bool? value) {
-                        setState(() {
-                          valueChooseEnabled = value;
-                        });
-                      },
                     ),
                     Button(
                       text: "Submit",
@@ -161,9 +131,9 @@ class _AddClinicViewState extends State<AddClinicView> {
         ownerName: ownerName!,
         specialization: specialization!,
         email: email!,
-        role: valueChooseRole!,
+        role: "CLINIC",
         userPhoneNumbers: [phone!], // Pass the phone numbers as a list
-        enabled: valueChooseEnabled!,
+        enabled: true,
       );
 
       print("Clinic added successfully: $clinic");

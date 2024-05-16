@@ -3,7 +3,8 @@ import 'package:medicory/models/general_model.dart';
 import 'package:medicory/widgets/constants.dart';
 
 class CustomTextField extends StatelessWidget {
-  const CustomTextField({super.key, required this.addTextField});
+  const CustomTextField({Key? key, required this.addTextField})
+      : super(key: key);
   final AddTextField addTextField;
 
   @override
@@ -33,6 +34,8 @@ class CustomTextField extends StatelessWidget {
                     ),
                     child: TextField(
                       onChanged: addTextField.onchange,
+                      keyboardType:
+                          addTextField.keyboardType ?? TextInputType.text,
                       decoration: InputDecoration(
                         hintText: addTextField.hintText,
                         contentPadding:

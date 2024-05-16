@@ -165,7 +165,7 @@ class _SearchPharmacyViewState extends State<SearchPharmacyView> {
                 return GestureDetector(
                   onTap: () async {
                     String url =
-                        "http://10.0.2.2/admin/pharmacies/id/${pharmacy.pharmacyId}/pharmacy";
+                        "http://10.0.2.2:8081/admin/pharmacies/id/${pharmacy.pharmacyId}/pharmacy";
                     List<GetPharmacyModel> pharmacyData =
                         await SearchPharmacy(Dio()).showPharmacyById(url);
                     print(pharmacyData);

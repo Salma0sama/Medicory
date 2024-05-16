@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import 'package:medicory/models/general_model.dart';
 import 'package:medicory/models/get_lab_model.dart';
+import 'package:medicory/views/edit_lab_view.dart';
 import 'package:medicory/widgets/build_divider_widget.dart';
 import 'package:medicory/widgets/build_row_widget.dart';
 import 'package:medicory/widgets/button_widget.dart';
@@ -69,23 +71,37 @@ class _LabDetailsState extends State<LabDetails> {
                           ],
                         );
                       } else {
-                        return Button(
-                          onPressed: () {
-                            // Navigator.push(
-                            //   context,
-                            //   MaterialPageRoute(
-                            //     builder: (context) {
-                            //       return EditOwnerView(
-                            //           getOwnerModel: widget.getOwnerModel,
-                            //           relativePhoneNumber:
-                            //               widget.relativePhoneNumber,
-                            //           userDetail: widget.userDetail,
-                            //           userPhoneNumber: widget.userPhoneNumber);
-                            //     },
-                            //   ),
-                            // );
-                          },
-                          text: "Edit",
+                        return Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Button(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) {
+                                      return EditLabView(
+                                          getLabModel: widget.getLabModel);
+                                    },
+                                  ),
+                                );
+                              },
+                              text: "Edit",
+                            ),
+                            SizedBox(
+                              width: 35,
+                            ),
+                            Button(
+                              onPressed: () async {
+                                await http.delete(
+                                  Uri.parse(
+                                      "http://10.0.2.2:8081/admin/labs/lab/${widget.getLabModel.id}"),
+                                );
+                              },
+                              color: Colors.red,
+                              text: "Delete",
+                            ),
+                          ],
                         );
                       }
                     },

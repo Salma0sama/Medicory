@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import 'package:medicory/models/general_model.dart';
 import 'package:medicory/models/get_clinic_model.dart';
+import 'package:medicory/views/edit_clinic_view.dart';
 import 'package:medicory/widgets/build_divider_widget.dart';
 import 'package:medicory/widgets/build_row_widget.dart';
 import 'package:medicory/widgets/button_widget.dart';
@@ -164,23 +166,38 @@ class _ClinicDetailsState extends State<ClinicDetails> {
                           ],
                         );
                       } else {
-                        return Button(
-                          onPressed: () {
-                            // Navigator.push(
-                            //   context,
-                            //   MaterialPageRoute(
-                            //     builder: (context) {
-                            //       return EditOwnerView(
-                            //           getOwnerModel: widget.getOwnerModel,
-                            //           relativePhoneNumber:
-                            //               widget.relativePhoneNumber,
-                            //           userDetail: widget.userDetail,
-                            //           userPhoneNumber: widget.userPhoneNumber);
-                            //     },
-                            //   ),
-                            // );
-                          },
-                          text: "Edit",
+                        return Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Button(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) {
+                                      return EditClinicView(
+                                          getClinicModel:
+                                              widget.getClinicModel);
+                                    },
+                                  ),
+                                );
+                              },
+                              text: "Edit",
+                            ),
+                            SizedBox(
+                              width: 35,
+                            ),
+                            Button(
+                              onPressed: () async {
+                                await http.delete(
+                                  Uri.parse(
+                                      "http://10.0.2.2:8081/admin/clinics/id/${widget.getClinicModel.id}"),
+                                );
+                              },
+                              color: Colors.red,
+                              text: "Delete",
+                            ),
+                          ],
                         );
                       }
                     },

@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:medicory/widgets/constants.dart';
 
 class Button extends StatefulWidget {
-  const Button({Key? key, required this.onPressed, required this.text});
+  const Button(
+      {Key? key, required this.onPressed, required this.text, this.color});
   final Function() onPressed;
   final String text;
-
+  final Color? color;
   @override
   State<Button> createState() => _ButtonState();
 }
@@ -20,7 +21,7 @@ class _ButtonState extends State<Button> {
         children: [
           ElevatedButton(
             style: ElevatedButton.styleFrom(
-              backgroundColor: kPrimaryColor,
+              backgroundColor: widget.color ?? kPrimaryColor,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8),
               ),

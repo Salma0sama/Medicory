@@ -1,3 +1,4 @@
+import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:medicory/models/general_model.dart';
 import 'package:medicory/models/get_owner_model.dart';
@@ -88,23 +89,42 @@ class _OwnerDetailsState extends State<OwnerDetails> {
                           ],
                         );
                       } else {
-                        return Button(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) {
-                                  return EditOwnerView(
-                                      getOwnerModel: widget.getOwnerModel,
-                                      relativePhoneNumber:
-                                          widget.relativePhoneNumber,
-                                      userDetail: widget.userDetail,
-                                      userPhoneNumber: widget.userPhoneNumber);
-                                },
-                              ),
-                            );
-                          },
-                          text: "Edit",
+                        return Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Button(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) {
+                                      return EditOwnerView(
+                                          getOwnerModel: widget.getOwnerModel,
+                                          relativePhoneNumber:
+                                              widget.relativePhoneNumber,
+                                          userDetail: widget.userDetail,
+                                          userPhoneNumber:
+                                              widget.userPhoneNumber);
+                                    },
+                                  ),
+                                );
+                              },
+                              text: "Edit",
+                            ),
+                            SizedBox(
+                              width: 35,
+                            ),
+                            Button(
+                              onPressed: () async {
+                                await http.delete(
+                                  Uri.parse(
+                                      "http://10.0.2.2:8081/admin/owners/id/${widget.getOwnerModel.id}"),
+                                );
+                              },
+                              color: Colors.red,
+                              text: "Delete",
+                            ),
+                          ],
                         );
                       }
                     },

@@ -4,9 +4,7 @@ import 'package:medicory/models/general_model.dart';
 import 'package:medicory/services/add_new_pharmacy_service.dart';
 import 'package:medicory/widgets/button_widget.dart';
 import 'package:medicory/widgets/constants.dart';
-import 'package:medicory/widgets/custom_dropdownbutton_widget.dart';
 import 'package:medicory/widgets/custom_textfield_widget.dart';
-import 'package:medicory/widgets/enable_radiobutton_widget.dart';
 
 class AddPharmacyView extends StatefulWidget {
   const AddPharmacyView({super.key});
@@ -82,41 +80,13 @@ class _AddPharmacyViewState extends State<AddPharmacyView> {
                         hintText: "Email",
                       ),
                     ),
-                    CustomDropdownButton(
-                      addDropdownButton: AddDropdownButton(
-                          label: "Role :",
-                          hint: "Select Role",
-                          items: [
-                            "HOSPITAL",
-                            "CLINIC",
-                            "PHARMACY",
-                            "LAB",
-                            "OWNER",
-                            "ADMIN",
-                            "DOCTOR",
-                            "EMERGENCY"
-                          ],
-                          value: valueChooseRole,
-                          onChanged: (data) {
-                            setState(() {
-                              valueChooseRole = data;
-                            });
-                          }),
-                    ),
                     CustomTextField(
                       addTextField: AddTextField(
                         onchange: (data) => setState(() => phone = data),
                         Label: "User Phone :",
                         hintText: "User Phone",
+                        keyboardType: TextInputType.number,
                       ),
-                    ),
-                    EnableRadioRow(
-                      valueChooseEnabled: valueChooseEnabled,
-                      onChanged: (bool? value) {
-                        setState(() {
-                          valueChooseEnabled = value;
-                        });
-                      },
                     ),
                     Button(
                       text: "Submit",
@@ -147,9 +117,9 @@ class _AddPharmacyViewState extends State<AddPharmacyView> {
         address: address!,
         ownerName: ownerName!,
         email: email!,
-        role: valueChooseRole!,
+        role: "PHARMACY",
         userPhoneNumbers: [phone!],
-        enabled: valueChooseEnabled!,
+        enabled: true,
       );
 
       print("Pharmacy added successfully: $clinic");

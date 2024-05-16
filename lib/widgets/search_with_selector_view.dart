@@ -39,7 +39,11 @@ class SearchWithSelector extends StatelessWidget {
             ),
             value: option,
             groupValue: selectedValue,
-            onChanged: onChanged,
+            onChanged: (newValue) {
+              // Clear the text field when a new option is selected
+              onChanged(null); // Clear text field
+              onChanged(newValue); // Update selected value
+            },
           );
         }).toList(),
       ],

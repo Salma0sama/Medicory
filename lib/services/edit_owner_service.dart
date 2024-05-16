@@ -1,9 +1,9 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:medicory/models/edit_owner_model.dart';
+import 'package:medicory/models/get_owner_model.dart';
 
 class EditOwnerService {
-  Future<EditOwnerModel> EditOwner({
+  Future<GetOwnerModel> EditOwner({
     required int id,
     required String firstName,
     required String middleName,
@@ -15,8 +15,8 @@ class EditOwnerService {
     required int nationalId,
     required String maritalStatus,
     required String job,
-    required List<RelativePhoneNumbers> relativePhoneNumbers,
-    required UserDetails user,
+    required List<RelativePhoneNumber> relativePhoneNumbers,
+    required UserDetail user,
   }) async {
     final Map<String, dynamic> ownerData = {
       "id": id,
@@ -42,7 +42,7 @@ class EditOwnerService {
     );
 
     if (response.statusCode == 200) {
-      return EditOwnerModel.fromJson(jsonDecode(response.body));
+      return GetOwnerModel.fromJson(jsonDecode(response.body));
     } else {
       throw Exception(
           "Failed to edit owner ${response.statusCode} with ${response.body}");

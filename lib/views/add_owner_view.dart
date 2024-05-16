@@ -6,7 +6,6 @@ import 'package:medicory/widgets/button_widget.dart';
 import 'package:medicory/widgets/constants.dart';
 import 'package:medicory/widgets/custom_dropdownbutton_widget.dart';
 import 'package:medicory/widgets/custom_textfield_widget.dart';
-import 'package:medicory/widgets/enable_radiobutton_widget.dart';
 
 class AddOwnerView extends StatefulWidget {
   const AddOwnerView({super.key});
@@ -98,6 +97,7 @@ class _AddOwnerViewState extends State<AddOwnerView> {
                       onchange: (data) => setState(() => dateOfBirth = data),
                       Label: "Date Of Birth :",
                       hintText: "Date Of Birth",
+                      keyboardType: TextInputType.datetime,
                     ),
                   ),
                   CustomTextField(
@@ -134,6 +134,7 @@ class _AddOwnerViewState extends State<AddOwnerView> {
                           setState(() => nationalId = int.tryParse(data)),
                       Label: "National ID :",
                       hintText: "National ID",
+                      keyboardType: TextInputType.number,
                     ),
                   ),
                   CustomDropdownButton(
@@ -160,6 +161,7 @@ class _AddOwnerViewState extends State<AddOwnerView> {
                       onchange: (data) => setState(() => relativePhone = data),
                       Label: "Relative Phone :",
                       hintText: "Relative Phone",
+                      keyboardType: TextInputType.phone,
                     ),
                   ),
                   CustomTextField(
@@ -177,41 +179,13 @@ class _AddOwnerViewState extends State<AddOwnerView> {
                       hintText: "User Email",
                     ),
                   ),
-                  CustomDropdownButton(
-                    addDropdownButton: AddDropdownButton(
-                        label: "Role :",
-                        hint: "Select Role",
-                        items: [
-                          "HOSPITAL",
-                          "CLINIC",
-                          "PHARMACY",
-                          "LAB",
-                          "OWNER",
-                          "ADMIN",
-                          "DOCTOR",
-                          "EMERGENCY"
-                        ],
-                        value: valueChooseRole,
-                        onChanged: (data) {
-                          setState(() {
-                            valueChooseRole = data;
-                          });
-                        }),
-                  ),
                   CustomTextField(
                     addTextField: AddTextField(
                       onchange: (data) => setState(() => phone = data),
                       Label: "User Phone :",
                       hintText: "User Phone",
+                      keyboardType: TextInputType.phone,
                     ),
-                  ),
-                  EnableRadioRow(
-                    valueChooseEnabled: valueChooseEnabled,
-                    onChanged: (bool? value) {
-                      setState(() {
-                        valueChooseEnabled = value;
-                      });
-                    },
                   ),
                   Button(
                     text: "Submit",
@@ -251,12 +225,35 @@ class _AddOwnerViewState extends State<AddOwnerView> {
         ],
         user: UserDetail(
           email: email!,
-          role: valueChooseRole!,
+          role: "OWNER",
           userPhoneNumbers: [UserPhoneNumber(phone: phone!)],
-          enabled: valueChooseEnabled!,
+          enabled: true,
         ),
       );
       print("Owner added successfully: $owner");
+
+      setState(() {
+        firstName = null;
+        middleName = null;
+        lastName = null;
+        valueChooseGender = null;
+        dateOfBirth = null;
+        address = null;
+        valueChooseBloodType = null;
+        nationalId = null;
+        valueChooseMaritalStatus = null;
+        job = null;
+        relativePhone = null;
+        relativeRelation = null;
+        email = null;
+        phone = null;
+      });
+
+      valueChooseGender = null;
+      valueChooseBloodType = null;
+      valueChooseMaritalStatus = null;
+
+      _formKey.currentState?.reset();
     } catch (error) {
       print("Failed to add owner: $error");
     }

@@ -6,7 +6,6 @@ import 'package:medicory/widgets/button_widget.dart';
 import 'package:medicory/widgets/constants.dart';
 import 'package:medicory/widgets/custom_dropdownbutton_widget.dart';
 import 'package:medicory/widgets/custom_textfield_widget.dart';
-import 'package:medicory/widgets/enable_radiobutton_widget.dart';
 
 class AddDoctorView extends StatefulWidget {
   const AddDoctorView({super.key});
@@ -99,6 +98,7 @@ class _AddDoctorViewState extends State<AddDoctorView> {
                               data),
                       Label: "National ID :",
                       hintText: "National ID",
+                      keyboardType: TextInputType.number,
                     ),
                   ),
                   CustomDropdownButton(
@@ -132,41 +132,13 @@ class _AddDoctorViewState extends State<AddDoctorView> {
                       hintText: "User Email",
                     ),
                   ),
-                  CustomDropdownButton(
-                    addDropdownButton: AddDropdownButton(
-                        label: "Role :",
-                        hint: "Select Role",
-                        items: [
-                          "HOSPITAL",
-                          "CLINIC",
-                          "PHARMACY",
-                          "LAB",
-                          "OWNER",
-                          "ADMIN",
-                          "DOCTOR",
-                          "EMERGENCY"
-                        ],
-                        value: valueChooseRole,
-                        onChanged: (data) {
-                          setState(() {
-                            valueChooseRole = data;
-                          });
-                        }),
-                  ),
                   CustomTextField(
                     addTextField: AddTextField(
                       onchange: (data) => setState(() => phone = data),
                       Label: "User Phone :",
                       hintText: "User Phone",
+                      keyboardType: TextInputType.phone,
                     ),
-                  ),
-                  EnableRadioRow(
-                    valueChooseEnabled: valueChooseEnabled,
-                    onChanged: (bool? value) {
-                      setState(() {
-                        valueChooseEnabled = value;
-                      });
-                    },
                   ),
                   Button(
                     text: "Submit",
@@ -199,9 +171,9 @@ class _AddDoctorViewState extends State<AddDoctorView> {
         maritalStatus: valueChooseMaritalStatus!,
         gender: valueChooseGender!,
         email: email!,
-        role: valueChooseRole!,
+        role: "DOCTOR",
         userPhoneNumbers: [phone!],
-        enabled: valueChooseEnabled!,
+        enabled: true,
       );
       print("Doctor added successfully: $owner");
     } catch (error) {

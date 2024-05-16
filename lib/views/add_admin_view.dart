@@ -6,7 +6,6 @@ import 'package:medicory/widgets/button_widget.dart';
 import 'package:medicory/widgets/constants.dart';
 import 'package:medicory/widgets/custom_dropdownbutton_widget.dart';
 import 'package:medicory/widgets/custom_textfield_widget.dart';
-import 'package:medicory/widgets/enable_radiobutton_widget.dart';
 
 class AddAdminView extends StatefulWidget {
   const AddAdminView({super.key});
@@ -94,41 +93,13 @@ class _AddAdminViewState extends State<AddAdminView> {
                         hintText: "User Email",
                       ),
                     ),
-                    CustomDropdownButton(
-                      addDropdownButton: AddDropdownButton(
-                          label: "Role :",
-                          hint: "Select Role",
-                          items: [
-                            "HOSPITAL",
-                            "CLINIC",
-                            "PHARMACY",
-                            "LAB",
-                            "OWNER",
-                            "ADMIN",
-                            "DOCTOR",
-                            "EMERGENCY"
-                          ],
-                          value: valueChooseRole,
-                          onChanged: (data) {
-                            setState(() {
-                              valueChooseRole = data;
-                            });
-                          }),
-                    ),
                     CustomTextField(
                       addTextField: AddTextField(
                         onchange: (data) => setState(() => phone = data),
                         Label: "User Phone :",
                         hintText: "User Phone",
+                        keyboardType: TextInputType.number,
                       ),
-                    ),
-                    EnableRadioRow(
-                      valueChooseEnabled: valueChooseEnabled,
-                      onChanged: (bool? value) {
-                        setState(() {
-                          valueChooseEnabled = value;
-                        });
-                      },
                     ),
                     Button(
                       text: "Submit",
@@ -158,9 +129,9 @@ class _AddAdminViewState extends State<AddAdminView> {
         maritalStatus: valueChooseMaritalStatus!,
         gender: valueChooseGender!,
         email: email!,
-        role: valueChooseRole!,
+        role: "ADMIN",
         userPhoneNumbers: [phone!],
-        enabled: valueChooseEnabled!,
+        enabled: true,
       );
       print("Admin added successfully: $admin");
     } catch (error) {

@@ -59,6 +59,4 @@ class SearchAdmin {
       return [];
     }
   }
-
-  showA(String url) {}
 }
