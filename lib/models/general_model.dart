@@ -7,16 +7,18 @@ class ButtonDetails {
 }
 
 class AddTextField {
-  final Function(String) onchange;
-  final String Label;
+  final dynamic Function(String) onUpdate; // Update to onUpdate
+  final String label;
   final String hintText;
-  final TextInputType? keyboardType; // Define keyboardType property
+  final TextInputType? keyboardType;
+  final TextEditingController controller;
 
   AddTextField({
-    required this.onchange,
-    required this.Label,
+    required this.onUpdate, // Updated to onUpdate
+    required this.label,
     required this.hintText,
-    this.keyboardType, // Make keyboardType optional
+    this.keyboardType,
+    required this.controller,
   });
 }
 
@@ -25,9 +27,9 @@ class AddDropdownButton {
   final String hint;
   final List<String> items;
   final String? value;
-  final Function(String?) onChanged;
+  final ValueChanged<String?> onChanged;
 
-  const AddDropdownButton({
+  AddDropdownButton({
     required this.label,
     required this.hint,
     required this.items,
@@ -41,4 +43,28 @@ class RowData {
   final dynamic value;
 
   const RowData({required this.label, required this.value});
+}
+
+class Prescription {
+  final int rank;
+  final String text;
+  final Function()? onTap;
+
+  const Prescription(
+      {required this.rank, required this.text, required this.onTap});
+}
+
+class LabTests {
+  final int id;
+  final String name;
+  final String description;
+  final String testNotes;
+  final Function() onTap;
+
+  const LabTests(
+      {required this.id,
+      required this.name,
+      required this.description,
+      required this.testNotes,
+      required this.onTap});
 }

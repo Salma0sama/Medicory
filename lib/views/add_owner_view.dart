@@ -49,159 +49,159 @@ class _AddOwnerViewState extends State<AddOwnerView> {
         ),
         iconTheme: IconThemeData(color: kTextColor),
       ),
-      body: Padding(
-        padding: const EdgeInsets.only(left: 16, right: 16),
-        child: Container(
-          width: MediaQuery.of(context).size.width,
-          child: Form(
-            key: _formKey,
-            child: SingleChildScrollView(
-              physics: BouncingScrollPhysics(),
-              child: Column(
-                children: [
-                  CustomTextField(
-                    addTextField: AddTextField(
-                      onchange: (data) => setState(() => firstName = data),
-                      Label: "First Name :",
-                      hintText: "First Name",
-                    ),
-                  ),
-                  CustomTextField(
-                    addTextField: AddTextField(
-                      onchange: (data) => setState(() => middleName = data),
-                      Label: "Middle Name :",
-                      hintText: "Middle Name",
-                    ),
-                  ),
-                  CustomTextField(
-                    addTextField: AddTextField(
-                      onchange: (data) => setState(() => lastName = data),
-                      Label: "Last Name :",
-                      hintText: "Last Name",
-                    ),
-                  ),
-                  CustomDropdownButton(
-                    addDropdownButton: AddDropdownButton(
-                        label: "Gender :",
-                        hint: "Select Gender",
-                        items: ["MALE", "FEMALE"],
-                        value: valueChooseGender,
-                        onChanged: (data) {
-                          setState(() {
-                            valueChooseGender = data;
-                          });
-                        }),
-                  ),
-                  CustomTextField(
-                    addTextField: AddTextField(
-                      onchange: (data) => setState(() => dateOfBirth = data),
-                      Label: "Date Of Birth :",
-                      hintText: "Date Of Birth",
-                      keyboardType: TextInputType.datetime,
-                    ),
-                  ),
-                  CustomTextField(
-                    addTextField: AddTextField(
-                      onchange: (data) => setState(() => address = data),
-                      Label: "Address :",
-                      hintText: "Address",
-                    ),
-                  ),
-                  CustomDropdownButton(
-                    addDropdownButton: AddDropdownButton(
-                        label: "Blood Type :",
-                        hint: "Select Blood Type",
-                        items: [
-                          "A_POSITIVE",
-                          "A_NEGATIVE",
-                          "B_POSITIVE",
-                          "B_NEGATIVE",
-                          "AB_POSITIVE",
-                          "AB_NEGATIVE",
-                          "O_POSITIVE",
-                          "O_NEGATIVE"
-                        ],
-                        value: valueChooseBloodType,
-                        onChanged: (data) {
-                          setState(() {
-                            valueChooseBloodType = data;
-                          });
-                        }),
-                  ),
-                  CustomTextField(
-                    addTextField: AddTextField(
-                      onchange: (data) =>
-                          setState(() => nationalId = int.tryParse(data)),
-                      Label: "National ID :",
-                      hintText: "National ID",
-                      keyboardType: TextInputType.number,
-                    ),
-                  ),
-                  CustomDropdownButton(
-                    addDropdownButton: AddDropdownButton(
-                        label: "Marital Status :",
-                        hint: "Select Marital Status",
-                        items: ["SINGLE", "MARRIED", "DIVORCED", "WIDOWED"],
-                        value: valueChooseMaritalStatus,
-                        onChanged: (data) {
-                          setState(() {
-                            valueChooseMaritalStatus = data;
-                          });
-                        }),
-                  ),
-                  CustomTextField(
-                    addTextField: AddTextField(
-                      onchange: (data) => setState(() => job = data),
-                      Label: "Job :",
-                      hintText: "Job",
-                    ),
-                  ),
-                  CustomTextField(
-                    addTextField: AddTextField(
-                      onchange: (data) => setState(() => relativePhone = data),
-                      Label: "Relative Phone :",
-                      hintText: "Relative Phone",
-                      keyboardType: TextInputType.phone,
-                    ),
-                  ),
-                  CustomTextField(
-                    addTextField: AddTextField(
-                      onchange: (data) =>
-                          setState(() => relativeRelation = data),
-                      Label: "Relative Relation :",
-                      hintText: "Relative Relation",
-                    ),
-                  ),
-                  CustomTextField(
-                    addTextField: AddTextField(
-                      onchange: (data) => setState(() => email = data),
-                      Label: "User Email :",
-                      hintText: "User Email",
-                    ),
-                  ),
-                  CustomTextField(
-                    addTextField: AddTextField(
-                      onchange: (data) => setState(() => phone = data),
-                      Label: "User Phone :",
-                      hintText: "User Phone",
-                      keyboardType: TextInputType.phone,
-                    ),
-                  ),
-                  Button(
-                    text: "Submit",
-                    onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        _formKey.currentState!.save();
-                        submitData(context);
-                      }
-                    },
-                  )
-                ],
-              ),
-            ),
-          ),
-        ),
-      ),
+      // body: Padding(
+      //   padding: const EdgeInsets.only(left: 16, right: 16),
+      //   child: Container(
+      //     width: MediaQuery.of(context).size.width,
+      //     child: Form(
+      //       key: _formKey,
+      //       child: SingleChildScrollView(
+      //         physics: BouncingScrollPhysics(),
+      //         child: Column(
+      //           children: [
+      //             CustomTextField(
+      //               addTextField: AddTextField(
+      //                 onchange: (data) => setState(() => firstName = data),
+      //                 Label: "First Name :",
+      //                 hintText: "First Name",
+      //               ),
+      //             ),
+      //             CustomTextField(
+      //               addTextField: AddTextField(
+      //                 onchange: (data) => setState(() => middleName = data),
+      //                 Label: "Middle Name :",
+      //                 hintText: "Middle Name",
+      //               ),
+      //             ),
+      //             CustomTextField(
+      //               addTextField: AddTextField(
+      //                 onchange: (data) => setState(() => lastName = data),
+      //                 Label: "Last Name :",
+      //                 hintText: "Last Name",
+      //               ),
+      //             ),
+      //             CustomDropdownButton(
+      //               addDropdownButton: AddDropdownButton(
+      //                   label: "Gender :",
+      //                   hint: "Select Gender",
+      //                   items: ["MALE", "FEMALE"],
+      //                   value: valueChooseGender,
+      //                   onChanged: (data) {
+      //                     setState(() {
+      //                       valueChooseGender = data;
+      //                     });
+      //                   }),
+      //             ),
+      //             CustomTextField(
+      //               addTextField: AddTextField(
+      //                 onchange: (data) => setState(() => dateOfBirth = data),
+      //                 Label: "Date Of Birth :",
+      //                 hintText: "Date Of Birth",
+      //                 keyboardType: TextInputType.datetime,
+      //               ),
+      //             ),
+      //             CustomTextField(
+      //               addTextField: AddTextField(
+      //                 onchange: (data) => setState(() => address = data),
+      //                 Label: "Address :",
+      //                 hintText: "Address",
+      //               ),
+      //             ),
+      //             CustomDropdownButton(
+      //               addDropdownButton: AddDropdownButton(
+      //                   label: "Blood Type :",
+      //                   hint: "Select Blood Type",
+      //                   items: [
+      //                     "A_POSITIVE",
+      //                     "A_NEGATIVE",
+      //                     "B_POSITIVE",
+      //                     "B_NEGATIVE",
+      //                     "AB_POSITIVE",
+      //                     "AB_NEGATIVE",
+      //                     "O_POSITIVE",
+      //                     "O_NEGATIVE"
+      //                   ],
+      //                   value: valueChooseBloodType,
+      //                   onChanged: (data) {
+      //                     setState(() {
+      //                       valueChooseBloodType = data;
+      //                     });
+      //                   }),
+      //             ),
+      //             CustomTextField(
+      //               addTextField: AddTextField(
+      //                 onchange: (data) =>
+      //                     setState(() => nationalId = int.tryParse(data)),
+      //                 Label: "National ID :",
+      //                 hintText: "National ID",
+      //                 keyboardType: TextInputType.number,
+      //               ),
+      //             ),
+      //             CustomDropdownButton(
+      //               addDropdownButton: AddDropdownButton(
+      //                   label: "Marital Status :",
+      //                   hint: "Select Marital Status",
+      //                   items: ["SINGLE", "MARRIED", "DIVORCED", "WIDOWED"],
+      //                   value: valueChooseMaritalStatus,
+      //                   onChanged: (data) {
+      //                     setState(() {
+      //                       valueChooseMaritalStatus = data;
+      //                     });
+      //                   }),
+      //             ),
+      //             CustomTextField(
+      //               addTextField: AddTextField(
+      //                 onchange: (data) => setState(() => job = data),
+      //                 Label: "Job :",
+      //                 hintText: "Job",
+      //               ),
+      //             ),
+      //             CustomTextField(
+      //               addTextField: AddTextField(
+      //                 onchange: (data) => setState(() => relativePhone = data),
+      //                 Label: "Relative Phone :",
+      //                 hintText: "Relative Phone",
+      //                 keyboardType: TextInputType.phone,
+      //               ),
+      //             ),
+      //             CustomTextField(
+      //               addTextField: AddTextField(
+      //                 onchange: (data) =>
+      //                     setState(() => relativeRelation = data),
+      //                 Label: "Relative Relation :",
+      //                 hintText: "Relative Relation",
+      //               ),
+      //             ),
+      //             CustomTextField(
+      //               addTextField: AddTextField(
+      //                 onchange: (data) => setState(() => email = data),
+      //                 Label: "User Email :",
+      //                 hintText: "User Email",
+      //               ),
+      //             ),
+      //             CustomTextField(
+      //               addTextField: AddTextField(
+      //                 onchange: (data) => setState(() => phone = data),
+      //                 Label: "User Phone :",
+      //                 hintText: "User Phone",
+      //                 keyboardType: TextInputType.phone,
+      //               ),
+      //             ),
+      //             Button(
+      //               text: "Submit",
+      //               onPressed: () {
+      //                 if (_formKey.currentState!.validate()) {
+      //                   _formKey.currentState!.save();
+      //                   submitData(context);
+      //                 }
+      //               },
+      //             )
+      //           ],
+      //         ),
+      //       ),
+      //     ),
+      //   ),
+      // ),
     );
   }
 

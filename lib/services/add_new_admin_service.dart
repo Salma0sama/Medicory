@@ -1,9 +1,8 @@
 import 'dart:convert';
-import 'package:medicory/models/add_new_admin_model.dart';
 import 'package:http/http.dart' as http;
 
 class AddNewAdminService {
-  Future<AddNewAdminModel> addNewAdmin({
+  Future<bool> addNewAdmin({
     required String firstName,
     required String lastName,
     required String maritalStatus,
@@ -31,7 +30,7 @@ class AddNewAdminService {
     );
 
     if (response.statusCode == 201) {
-      return AddNewAdminModel.fromJson(jsonDecode(response.body));
+      return true;
     } else {
       throw Exception(
           "Failed to add Admin ${response.statusCode} and body: ${response.body}");

@@ -34,76 +34,76 @@ class _AddPharmacyViewState extends State<AddPharmacyView> {
         ),
         iconTheme: IconThemeData(color: kTextColor),
       ),
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Container(
-            width: MediaQuery.of(context).size.width,
-            child: Form(
-              key: _formKey,
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    CustomTextField(
-                      addTextField: AddTextField(
-                        onchange: (data) => setState(() => name = data),
-                        Label: "Name :",
-                        hintText: "Name",
-                      ),
-                    ),
-                    CustomTextField(
-                      addTextField: AddTextField(
-                        onchange: (data) =>
-                            setState(() => googleMapsLink = data),
-                        Label: "Google Maps Link :",
-                        hintText: "Google Maps Link",
-                      ),
-                    ),
-                    CustomTextField(
-                      addTextField: AddTextField(
-                        onchange: (data) => setState(() => address = data),
-                        Label: "Address :",
-                        hintText: "Address",
-                      ),
-                    ),
-                    CustomTextField(
-                      addTextField: AddTextField(
-                        onchange: (data) => setState(() => ownerName = data),
-                        Label: "Owner Name :",
-                        hintText: "Owner Name",
-                      ),
-                    ),
-                    CustomTextField(
-                      addTextField: AddTextField(
-                        onchange: (data) => setState(() => email = data),
-                        Label: "Email :",
-                        hintText: "Email",
-                      ),
-                    ),
-                    CustomTextField(
-                      addTextField: AddTextField(
-                        onchange: (data) => setState(() => phone = data),
-                        Label: "User Phone :",
-                        hintText: "User Phone",
-                        keyboardType: TextInputType.number,
-                      ),
-                    ),
-                    Button(
-                      text: "Submit",
-                      onPressed: () {
-                        if (_formKey.currentState!.validate()) {
-                          _formKey.currentState!.save();
-                          submitData(context);
-                        }
-                      },
-                    )
-                  ],
-                ),
-              ),
-            ),
-          ),
-        ),
-      ),
+      // body: Center(
+      //   child: Padding(
+      //     padding: const EdgeInsets.all(16.0),
+      //     child: Container(
+      //       width: MediaQuery.of(context).size.width,
+      //       child: Form(
+      //         key: _formKey,
+      //         child: SingleChildScrollView(
+      //           child: Column(
+      //             children: [
+      //               CustomTextField(
+      //                 addTextField: AddTextField(
+      //                   onchange: (data) => setState(() => name = data),
+      //                   Label: "Name :",
+      //                   hintText: "Name",
+      //                 ),
+      //               ),
+      //               CustomTextField(
+      //                 addTextField: AddTextField(
+      //                   onchange: (data) =>
+      //                       setState(() => googleMapsLink = data),
+      //                   Label: "Google Maps Link :",
+      //                   hintText: "Google Maps Link",
+      //                 ),
+      //               ),
+      //               CustomTextField(
+      //                 addTextField: AddTextField(
+      //                   onchange: (data) => setState(() => address = data),
+      //                   Label: "Address :",
+      //                   hintText: "Address",
+      //                 ),
+      //               ),
+      //               CustomTextField(
+      //                 addTextField: AddTextField(
+      //                   onchange: (data) => setState(() => ownerName = data),
+      //                   Label: "Owner Name :",
+      //                   hintText: "Owner Name",
+      //                 ),
+      //               ),
+      //               CustomTextField(
+      //                 addTextField: AddTextField(
+      //                   onchange: (data) => setState(() => email = data),
+      //                   Label: "Email :",
+      //                   hintText: "Email",
+      //                 ),
+      //               ),
+      //               CustomTextField(
+      //                 addTextField: AddTextField(
+      //                   onchange: (data) => setState(() => phone = data),
+      //                   Label: "User Phone :",
+      //                   hintText: "User Phone",
+      //                   keyboardType: TextInputType.number,
+      //                 ),
+      //               ),
+      //               Button(
+      //                 text: "Submit",
+      //                 onPressed: () {
+      //                   if (_formKey.currentState!.validate()) {
+      //                     _formKey.currentState!.save();
+      //                     submitData(context);
+      //                   }
+      //                 },
+      //               )
+      //             ],
+      //           ),
+      //         ),
+      //       ),
+      //     ),
+      //   ),
+      // ),
     );
   }
 

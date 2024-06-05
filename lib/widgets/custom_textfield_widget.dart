@@ -16,7 +16,7 @@ class CustomTextField extends StatelessWidget {
         child: Row(
           children: [
             Text(
-              addTextField.Label,
+              addTextField.label,
               style: TextStyle(
                 fontSize: 19,
                 color: kPrimaryColor,
@@ -33,7 +33,8 @@ class CustomTextField extends StatelessWidget {
                       border: Border.all(color: kPrimaryColor, width: 1.2),
                     ),
                     child: TextField(
-                      onChanged: addTextField.onchange,
+                      controller: addTextField.controller,
+                      onChanged: addTextField.onUpdate, // Use onUpdate
                       keyboardType:
                           addTextField.keyboardType ?? TextInputType.text,
                       decoration: InputDecoration(
