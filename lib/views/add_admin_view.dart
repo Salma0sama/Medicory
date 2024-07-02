@@ -48,6 +48,35 @@ class _AddAdminViewState extends State<AddAdminView> {
 
   bool isLoading = false;
 
+  double getMaxLabelWidth() {
+    double maxWidth = 0;
+    final labels = [
+      "First Name",
+      "Last Name",
+      "Marital Status ",
+      "Gender",
+      "User Email",
+      "User Phone",
+    ];
+
+    for (final label in labels) {
+      final textPainter = TextPainter(
+        text: TextSpan(
+          text: label,
+          style: TextStyle(fontSize: 19),
+        ),
+        textDirection: TextDirection.ltr,
+      )..layout();
+
+      final labelWidth = textPainter.width;
+      if (labelWidth > maxWidth) {
+        maxWidth = labelWidth;
+      }
+    }
+
+    return maxWidth;
+  }
+
   @override
   Widget build(BuildContext context) {
     return ModalProgressHUD(
@@ -77,21 +106,23 @@ class _AddAdminViewState extends State<AddAdminView> {
                       addTextField: AddTextField(
                         controller: firstNameController,
                         onUpdate: (data) {},
-                        label: "First Name :",
+                        label: "First Name",
                         hintText: "First Name",
                       ),
+                      maxWidth: getMaxLabelWidth(),
                     ),
                     CustomTextField(
                       addTextField: AddTextField(
                         controller: lastNameController,
                         onUpdate: (data) {},
-                        label: "Last Name :",
+                        label: "Last Name",
                         hintText: "Last Name",
                       ),
+                      maxWidth: getMaxLabelWidth(),
                     ),
                     CustomDropdownButton(
                       addDropdownButton: AddDropdownButton(
-                        label: "Marital Status :",
+                        label: "Marital Status",
                         hint: "Select Marital Status",
                         items: ["SINGLE", "MARRIED", "DIVORCED", "WIDOWED"],
                         value: valueChooseMaritalStatus,
@@ -104,7 +135,7 @@ class _AddAdminViewState extends State<AddAdminView> {
                     ),
                     CustomDropdownButton(
                       addDropdownButton: AddDropdownButton(
-                        label: "Gender :",
+                        label: "Gender",
                         hint: "Select Gender",
                         items: ["MALE", "FEMALE"],
                         value: valueChooseGender,
@@ -119,18 +150,20 @@ class _AddAdminViewState extends State<AddAdminView> {
                       addTextField: AddTextField(
                         controller: emailController,
                         onUpdate: (data) {},
-                        label: "User Email :",
+                        label: "User Email",
                         hintText: "User Email",
                       ),
+                      maxWidth: getMaxLabelWidth(),
                     ),
                     CustomTextField(
                       addTextField: AddTextField(
                         controller: phoneController,
                         onUpdate: (data) {},
-                        label: "User Phone :",
+                        label: "User Phone",
                         hintText: "User Phone",
                         keyboardType: TextInputType.number,
                       ),
+                      maxWidth: getMaxLabelWidth(),
                     ),
                     Button(
                       text: "Submit",

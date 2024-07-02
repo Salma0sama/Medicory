@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:medicory/views/admin_home_view.dart';
+import 'package:medicory/views/lab_home_view.dart';
 
 void main() {
   runApp(const Admin());
@@ -12,7 +12,7 @@ class Admin extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: AdminHomeView(),
+      home: LabHomeView(),
     );
   }
 }

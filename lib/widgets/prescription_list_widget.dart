@@ -36,7 +36,7 @@ class _PrescriptionListState extends State<PrescriptionList> {
               borderRadius: BorderRadius.circular(8),
             ),
             backgroundColor: kPrimaryColor,
-            minimumSize: const Size(350, 55),
+            minimumSize: const Size(210, 55),
           ),
           child: Text(
             widget.buttonDetails.Text,

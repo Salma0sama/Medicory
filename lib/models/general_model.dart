@@ -22,19 +22,35 @@ class AddTextField {
   });
 }
 
+// class AddDropdownButton {
+//   final String label;
+//   final String hint;
+//   final List<String> items;
+//   final String? value;
+//   final ValueChanged<String?> onChanged;
+
+//   AddDropdownButton({
+//     required this.label,
+//     required this.hint,
+//     required this.items,
+//     required this.value,
+//     required this.onChanged,
+//   });
+// }
+
 class AddDropdownButton {
   final String label;
   final String hint;
-  final List<String> items;
   final String? value;
-  final ValueChanged<String?> onChanged;
+  final Function(String?)? onChanged;
+  final List<String> items;
 
   AddDropdownButton({
     required this.label,
     required this.hint,
-    required this.items,
     required this.value,
     required this.onChanged,
+    required this.items,
   });
 }
 

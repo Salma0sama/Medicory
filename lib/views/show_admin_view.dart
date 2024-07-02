@@ -3,7 +3,7 @@ import 'package:medicory/models/get_admin_model.dart';
 import 'package:medicory/widgets/admin_details_widget.dart';
 import 'package:medicory/widgets/constants.dart';
 
-class ShowAdminView extends StatefulWidget {
+class ShowAdminView extends StatelessWidget {
   final GetAdminModel getAdminModel;
 
   const ShowAdminView({
@@ -11,11 +11,6 @@ class ShowAdminView extends StatefulWidget {
     required this.getAdminModel,
   }) : super(key: key);
 
-  @override
-  State<ShowAdminView> createState() => _ShowOwnerState();
-}
-
-class _ShowOwnerState extends State<ShowAdminView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +28,7 @@ class _ShowOwnerState extends State<ShowAdminView> {
       body: Column(
         children: [
           Expanded(
-            child: AdminDetails(gatAdminModel: widget.getAdminModel),
+            child: AdminDetails(gatAdminModel: getAdminModel),
           ),
         ],
       ),

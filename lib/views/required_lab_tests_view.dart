@@ -95,7 +95,7 @@ import 'package:medicory/widgets/required_lab_list_widget.dart';
 class RequiredLabTests extends StatelessWidget {
   RequiredLabTests({super.key});
 
-  final String url = "http://10.0.2.2:8081/lab/tests/1";
+  final String url = "http://10.0.2.2:8081/lab/tests/2";
   final LabPrescriptions labPrescriptions = LabPrescriptions(Dio());
 
   @override

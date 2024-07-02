@@ -9,8 +9,8 @@ class GetPrescriptionModel {
 
   factory GetPrescriptionModel.fromJson(Map<String, dynamic> json) {
     return GetPrescriptionModel(
-      prescriptionId: json['prescriptionResponse']['prescriptionId'],
-      createdAt: DateTime.parse(json['prescriptionResponse']['createdAt']),
+      prescriptionId: json['prescriptionId'] as int,
+      createdAt: DateTime.parse(json['createdAt'] as String),
     );
   }
 }
@@ -26,8 +26,8 @@ class GetPrescriptionDetailsModel {
 
   factory GetPrescriptionDetailsModel.fromJson(Map<String, dynamic> json) {
     return GetPrescriptionDetailsModel(
-      doctorName: json['prescriptionResponse']['doctorName'],
-      createdAt: DateTime.parse(json['prescriptionResponse']['createdAt']),
+      doctorName: json['doctorName'],
+      createdAt: DateTime.parse(json['createdAt']),
     );
   }
 }

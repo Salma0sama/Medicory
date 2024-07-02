@@ -18,7 +18,7 @@ class AdminCategoriesView extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: kPrimaryColor,
         title: Text(
-          "Admins",
+          "Admin",
           style: TextStyle(
             color: kTextColor,
           ),

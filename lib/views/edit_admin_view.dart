@@ -47,14 +47,13 @@ class _EditAdminViewState extends State<EditAdminView> {
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  List<String> genderOptions = ["MALE", "FEMALE"]; // Data from API
-  // Data from API
+  List<String> genderOptions = ["MALE", "FEMALE"];
   List<String> maritalStatusOptions = [
     "SINGLE",
     "MARRIED",
     "DIVORCED",
     "WIDOWED"
-  ]; // Data from API// Data from API
+  ];
 
   @override
   void initState() {
@@ -94,7 +93,7 @@ class _EditAdminViewState extends State<EditAdminView> {
             physics: BouncingScrollPhysics(),
             slivers: [
               EditDetails(
-                label: "First Name :",
+                label: "First Name",
                 controller: _firstNameController,
                 onchange: (data) {
                   firstName = data;
@@ -102,7 +101,7 @@ class _EditAdminViewState extends State<EditAdminView> {
                 hintText: 'Enter First Name',
               ),
               EditDetails(
-                label: "Last Name :",
+                label: "Last Name",
                 controller: _lastNameController,
                 onchange: (data) {
                   lastName = data;
@@ -112,14 +111,13 @@ class _EditAdminViewState extends State<EditAdminView> {
               SliverToBoxAdapter(
                 child: CustomDropdownButton(
                   addDropdownButton: AddDropdownButton(
-                    label: "Gender :",
+                    label: "Gender",
                     hint: getAdminModel.gender,
                     items: genderOptions,
                     value: valueChooseGender,
                     onChanged: (data) {
                       setState(() {
-                        valueChooseGender =
-                            data; // Update state variable directly
+                        valueChooseGender = data;
                       });
                     },
                   ),
@@ -128,7 +126,7 @@ class _EditAdminViewState extends State<EditAdminView> {
               SliverToBoxAdapter(
                 child: CustomDropdownButton(
                   addDropdownButton: AddDropdownButton(
-                    label: "Marital Status :",
+                    label: "Marital Status",
                     hint: getAdminModel.maritalStatus,
                     items: maritalStatusOptions,
                     value: valueChooseMaritalStatus,
@@ -141,41 +139,41 @@ class _EditAdminViewState extends State<EditAdminView> {
                 ),
               ),
               EditDetails(
-                label: "User Code :",
+                label: "Code",
                 controller: _userCodeController,
                 onchange: (data) {
                   code = data;
                 },
                 readonly: true,
-                hintText: 'Enter User Code',
+                hintText: 'Enter Code',
               ),
               EditDetails(
-                label: "User Email :",
+                label: "Email",
                 controller: _userEmailController,
                 onchange: (data) {
                   email = data;
                 },
-                hintText: 'Enter User Email',
+                hintText: 'Enter Email',
               ),
               EditDetails(
-                label: "User Password :",
+                label: "Password",
                 controller: _userPasswordController,
                 onchange: (data) {
                   password = data;
                 },
-                hintText: 'Enter User Password',
+                hintText: 'Enter Password',
               ),
               EditDetails(
-                label: "User Role :",
+                label: "Role",
                 controller: _userRoleController,
                 onchange: (data) {
                   role = data;
                 },
                 readonly: true,
-                hintText: 'Enter User Role',
+                hintText: 'Enter Role',
               ),
               EditDetails(
-                label: "Phone :",
+                label: "Phone",
                 controller: _userPhoneNumberController,
                 onchange: (data) {
                   phone = data;
@@ -187,13 +185,23 @@ class _EditAdminViewState extends State<EditAdminView> {
                   padding: const EdgeInsets.only(top: 5),
                   child: Row(
                     children: [
-                      Text(
-                        "Enabled :",
-                        style: TextStyle(
-                          fontSize: 19,
-                          color: kPrimaryColor,
+                      SizedBox(
+                        child: Text(
+                          "Enabled",
+                          style: TextStyle(
+                            fontSize: 19,
+                            fontWeight: FontWeight.w500,
+                            color: kPrimaryColor,
+                          ),
                         ),
                       ),
+                      // Text(
+                      //   ":",
+                      //   style: TextStyle(
+                      //     fontSize: 19,
+                      //     color: kPrimaryColor,
+                      //   ),
+                      // ),
                       SizedBox(width: 10),
                       Radio<bool>(
                         value: true,

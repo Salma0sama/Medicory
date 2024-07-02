@@ -18,6 +18,8 @@ class BuildRow extends StatelessWidget {
             rowData.label,
             style: TextStyle(
               fontSize: 19,
+              fontWeight: FontWeight.w500,
+              // fontWeight: FontWeight.bold,
               color: kPrimaryColor,
             ),
           ),

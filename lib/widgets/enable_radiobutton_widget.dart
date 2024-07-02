@@ -25,6 +25,7 @@ class _EnableRadioRowState extends State<EnableRadioRow> {
             "Enabled :",
             style: TextStyle(
               fontSize: 19,
+              fontWeight: FontWeight.w500,
               color: kPrimaryColor,
             ),
           ),

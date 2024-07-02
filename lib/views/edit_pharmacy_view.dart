@@ -78,146 +78,146 @@ class _EditPharmacyViewState extends State<EditPharmacyView> {
         ),
         iconTheme: IconThemeData(color: kTextColor),
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: Form(
-          key: _formKey,
-          child: CustomScrollView(
-            physics: BouncingScrollPhysics(),
-            slivers: [
-              EditDetails(
-                label: "Name :",
-                controller: _nameController,
-                onchange: (data) {
-                  name = data;
-                },
-                hintText: 'Enter Name',
-              ),
-              EditDetails(
-                label: "Google Maps Link :",
-                controller: _googleMapsLinkController,
-                onchange: (data) {
-                  googleMapsLink = data;
-                },
-                hintText: 'Enter Google Maps Link',
-              ),
-              EditDetails(
-                label: "Address :",
-                controller: _addressController,
-                onchange: (data) {
-                  address = data;
-                },
-                hintText: 'Enter Address',
-              ),
-              EditDetails(
-                label: "Owner Name :",
-                controller: _ownerNameController,
-                onchange: (data) {
-                  ownerName = data;
-                },
-                hintText: 'Enter Owner Name',
-              ),
-              EditDetails(
-                label: "Code :",
-                controller: _userCodeController,
-                onchange: (data) {
-                  code = data;
-                },
-                readonly: true,
-                hintText: 'Enter Code',
-              ),
-              EditDetails(
-                label: "User Email :",
-                controller: _userEmailController,
-                onchange: (data) {
-                  email = data;
-                },
-                hintText: 'Enter Email',
-              ),
-              EditDetails(
-                label: "User Password :",
-                controller: _userPasswordController,
-                onchange: (data) {
-                  password = data;
-                },
-                hintText: 'Enter Password',
-              ),
-              EditDetails(
-                label: "User Role :",
-                controller: _userRoleController,
-                onchange: (data) {
-                  role = data;
-                },
-                readonly: true,
-                hintText: 'Enter Role',
-              ),
-              EditDetails(
-                label: "Phone :",
-                controller: _userPhoneNunmerController,
-                onchange: (data) {
-                  phone = data;
-                },
-                hintText: 'Enter Phone Number',
-              ),
-              SliverToBoxAdapter(
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 5),
-                  child: Row(
-                    children: [
-                      Text(
-                        "Enabled :",
-                        style: TextStyle(
-                          fontSize: 19,
-                          color: kPrimaryColor,
-                        ),
-                      ),
-                      SizedBox(width: 10),
-                      Radio<bool>(
-                        value: true,
-                        groupValue: enabled,
-                        onChanged: (value) {
-                          setState(() {
-                            enabled = value;
-                          });
-                        },
-                      ),
-                      Text(
-                        'True',
-                        style: TextStyle(fontSize: 16),
-                      ),
-                      SizedBox(width: 20),
-                      Radio<bool>(
-                        value: false,
-                        groupValue: enabled,
-                        onChanged: (value) {
-                          setState(() {
-                            enabled = value;
-                          });
-                        },
-                      ),
-                      Text(
-                        'False',
-                        style: TextStyle(fontSize: 16),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              SliverToBoxAdapter(
-                child: SaveButton(
-                  onPressed: () {
-                    if (_formKey.currentState!.validate()) {
-                      _formKey.currentState!.save();
-                      submitData(context);
-                    }
-                  },
-                  text: "Save",
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
+      // body: Padding(
+      //   padding: const EdgeInsets.symmetric(horizontal: 16),
+      //   child: Form(
+      //     key: _formKey,
+      //     child: CustomScrollView(
+      //       physics: BouncingScrollPhysics(),
+      //       slivers: [
+      //         EditDetails(
+      //           label: "Name :",
+      //           controller: _nameController,
+      //           onchange: (data) {
+      //             name = data;
+      //           },
+      //           hintText: 'Enter Name',
+      //         ),
+      //         EditDetails(
+      //           label: "Google Maps Link :",
+      //           controller: _googleMapsLinkController,
+      //           onchange: (data) {
+      //             googleMapsLink = data;
+      //           },
+      //           hintText: 'Enter Google Maps Link',
+      //         ),
+      //         EditDetails(
+      //           label: "Address :",
+      //           controller: _addressController,
+      //           onchange: (data) {
+      //             address = data;
+      //           },
+      //           hintText: 'Enter Address',
+      //         ),
+      //         EditDetails(
+      //           label: "Owner Name :",
+      //           controller: _ownerNameController,
+      //           onchange: (data) {
+      //             ownerName = data;
+      //           },
+      //           hintText: 'Enter Owner Name',
+      //         ),
+      //         EditDetails(
+      //           label: "Code :",
+      //           controller: _userCodeController,
+      //           onchange: (data) {
+      //             code = data;
+      //           },
+      //           readonly: true,
+      //           hintText: 'Enter Code',
+      //         ),
+      //         EditDetails(
+      //           label: "User Email :",
+      //           controller: _userEmailController,
+      //           onchange: (data) {
+      //             email = data;
+      //           },
+      //           hintText: 'Enter Email',
+      //         ),
+      //         EditDetails(
+      //           label: "User Password :",
+      //           controller: _userPasswordController,
+      //           onchange: (data) {
+      //             password = data;
+      //           },
+      //           hintText: 'Enter Password',
+      //         ),
+      //         EditDetails(
+      //           label: "User Role :",
+      //           controller: _userRoleController,
+      //           onchange: (data) {
+      //             role = data;
+      //           },
+      //           readonly: true,
+      //           hintText: 'Enter Role',
+      //         ),
+      //         EditDetails(
+      //           label: "Phone :",
+      //           controller: _userPhoneNunmerController,
+      //           onchange: (data) {
+      //             phone = data;
+      //           },
+      //           hintText: 'Enter Phone Number',
+      //         ),
+      //         SliverToBoxAdapter(
+      //           child: Padding(
+      //             padding: const EdgeInsets.only(top: 5),
+      //             child: Row(
+      //               children: [
+      //                 Text(
+      //                   "Enabled :",
+      //                   style: TextStyle(
+      //                     fontSize: 19,
+      //                     color: kPrimaryColor,
+      //                   ),
+      //                 ),
+      //                 SizedBox(width: 10),
+      //                 Radio<bool>(
+      //                   value: true,
+      //                   groupValue: enabled,
+      //                   onChanged: (value) {
+      //                     setState(() {
+      //                       enabled = value;
+      //                     });
+      //                   },
+      //                 ),
+      //                 Text(
+      //                   'True',
+      //                   style: TextStyle(fontSize: 16),
+      //                 ),
+      //                 SizedBox(width: 20),
+      //                 Radio<bool>(
+      //                   value: false,
+      //                   groupValue: enabled,
+      //                   onChanged: (value) {
+      //                     setState(() {
+      //                       enabled = value;
+      //                     });
+      //                   },
+      //                 ),
+      //                 Text(
+      //                   'False',
+      //                   style: TextStyle(fontSize: 16),
+      //                 ),
+      //               ],
+      //             ),
+      //           ),
+      //         ),
+      //         SliverToBoxAdapter(
+      //           child: SaveButton(
+      //             onPressed: () {
+      //               if (_formKey.currentState!.validate()) {
+      //                 _formKey.currentState!.save();
+      //                 submitData(context);
+      //               }
+      //             },
+      //             text: "Save",
+      //           ),
+      //         ),
+      //       ],
+      //     ),
+      //   ),
+      // ),
     );
   }
 

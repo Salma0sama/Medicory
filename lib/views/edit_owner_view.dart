@@ -134,233 +134,233 @@ class _EditOwnerViewState extends State<EditOwnerView> {
         ),
         iconTheme: IconThemeData(color: kTextColor),
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: Form(
-          key: _formKey,
-          child: CustomScrollView(
-            physics: BouncingScrollPhysics(),
-            slivers: [
-              EditDetails(
-                label: "First Name :",
-                controller: _firstNameController,
-                onchange: (data) {
-                  firstName = data;
-                },
-                hintText: 'Enter First Name',
-              ),
-              EditDetails(
-                label: "Maiden Name :",
-                controller: _middleNameController,
-                onchange: (data) {
-                  middleName = data;
-                },
-                hintText: 'Enter Middle Name',
-              ),
-              EditDetails(
-                label: "Last Name :",
-                controller: _lastNameController,
-                onchange: (data) {
-                  lastName = data;
-                },
-                hintText: 'Enter Last Name',
-              ),
-              SliverToBoxAdapter(
-                child: CustomDropdownButton(
-                  addDropdownButton: AddDropdownButton(
-                    label: "Gender :",
-                    hint: getOwnerModel.gender,
-                    items: genderOptions,
-                    value: valueChooseGender,
-                    onChanged: (data) {
-                      setState(() {
-                        valueChooseGender =
-                            data; // Update state variable directly
-                      });
-                    },
-                  ),
-                ),
-              ),
-              EditDetails(
-                label: "Date Of Birth :",
-                controller: _dateOfBirthController,
-                onchange: (data) {
-                  dateOfBirth = data;
-                },
-                hintText: 'Enter Date Of Birth',
-              ),
-              EditDetails(
-                label: "Address :",
-                controller: _addressController,
-                onchange: (data) {
-                  address = data;
-                },
-                hintText: 'Enter Address',
-              ),
-              SliverToBoxAdapter(
-                child: CustomDropdownButton(
-                  addDropdownButton: AddDropdownButton(
-                    label: "Blood Type :",
-                    hint: getOwnerModel.bloodType,
-                    items: bloodTypeOptions,
-                    value: valueChooseBloodType,
-                    onChanged: (data) {
-                      setState(() {
-                        valueChooseBloodType = data;
-                      });
-                    },
-                  ),
-                ),
-              ),
-              EditDetails(
-                label: "National ID :",
-                controller: _nationalIdController,
-                onchange: (data) {
-                  nationalId = data;
-                },
-                readonly: true,
-                hintText: 'Enter National ID',
-              ),
-              SliverToBoxAdapter(
-                child: CustomDropdownButton(
-                  addDropdownButton: AddDropdownButton(
-                    label: "Marital Status :",
-                    hint: getOwnerModel.maritalStatus,
-                    items: maritalStatusOptions,
-                    value: valueChooseMaritalStatus,
-                    onChanged: (data) {
-                      setState(() {
-                        valueChooseMaritalStatus = data;
-                      });
-                    },
-                  ),
-                ),
-              ),
-              EditDetails(
-                label: "Job :",
-                controller: _jobController,
-                onchange: (data) {
-                  job = data;
-                },
-                hintText: 'Enter Job',
-              ),
-              EditDetails(
-                label: "Relative Phone :",
-                controller: _relativePhoneController,
-                onchange: (data) {
-                  relativePhone = data;
-                },
-                hintText: 'Enter Relative Phone',
-              ),
-              EditDetails(
-                label: "Relative Relation :",
-                controller: _relativeRelationController,
-                onchange: (data) {
-                  relativeRelation = data;
-                },
-                hintText: 'Enter Relative Relation',
-              ),
-              EditDetails(
-                label: "User Code :",
-                controller: _userCodeController,
-                onchange: (data) {
-                  code = data;
-                },
-                readonly: true,
-                hintText: 'Enter User Code',
-              ),
-              EditDetails(
-                label: "User Email :",
-                controller: _userEmailController,
-                onchange: (data) {
-                  email = data;
-                },
-                hintText: 'Enter User Email',
-              ),
-              EditDetails(
-                label: "User Password :",
-                controller: _userPasswordController,
-                onchange: (data) {
-                  password = data;
-                },
-                hintText: 'Enter User Password',
-              ),
-              EditDetails(
-                label: "User Role :",
-                controller: _userRoleController,
-                onchange: (data) {
-                  role = data;
-                },
-                readonly: true,
-                hintText: 'Enter User Role',
-              ),
-              EditDetails(
-                label: "User Phone :",
-                controller: _userPhoneNumberController,
-                onchange: (data) {
-                  phone = data;
-                },
-                hintText: 'Enter User Phone',
-              ),
-              SliverToBoxAdapter(
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 5),
-                  child: Row(
-                    children: [
-                      Text(
-                        "Enabled :",
-                        style: TextStyle(
-                          fontSize: 19,
-                          color: kPrimaryColor,
-                        ),
-                      ),
-                      SizedBox(width: 10),
-                      Radio<bool>(
-                        value: true,
-                        groupValue: enabled,
-                        onChanged: (value) {
-                          setState(() {
-                            enabled = value;
-                          });
-                        },
-                      ),
-                      Text(
-                        'True',
-                        style: TextStyle(fontSize: 16),
-                      ),
-                      SizedBox(width: 20),
-                      Radio<bool>(
-                        value: false,
-                        groupValue: enabled,
-                        onChanged: (value) {
-                          setState(() {
-                            enabled = value;
-                          });
-                        },
-                      ),
-                      Text(
-                        'False',
-                        style: TextStyle(fontSize: 16),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              SliverToBoxAdapter(
-                child: SaveButton(
-                  onPressed: () {
-                    if (_formKey.currentState!.validate()) {
-                      _formKey.currentState!.save();
-                      submitData(context);
-                    }
-                  },
-                  text: "Save",
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
+      // body: Padding(
+      //   padding: const EdgeInsets.symmetric(horizontal: 16),
+      //   child: Form(
+      //     key: _formKey,
+      //     child: CustomScrollView(
+      //       physics: BouncingScrollPhysics(),
+      //       slivers: [
+      //         EditDetails(
+      //           label: "First Name :",
+      //           controller: _firstNameController,
+      //           onchange: (data) {
+      //             firstName = data;
+      //           },
+      //           hintText: 'Enter First Name',
+      //         ),
+      //         EditDetails(
+      //           label: "Maiden Name :",
+      //           controller: _middleNameController,
+      //           onchange: (data) {
+      //             middleName = data;
+      //           },
+      //           hintText: 'Enter Middle Name',
+      //         ),
+      //         EditDetails(
+      //           label: "Last Name :",
+      //           controller: _lastNameController,
+      //           onchange: (data) {
+      //             lastName = data;
+      //           },
+      //           hintText: 'Enter Last Name',
+      //         ),
+      //         SliverToBoxAdapter(
+      //           child: CustomDropdownButton(
+      //             addDropdownButton: AddDropdownButton(
+      //               label: "Gender :",
+      //               hint: getOwnerModel.gender,
+      //               items: genderOptions,
+      //               value: valueChooseGender,
+      //               onChanged: (data) {
+      //                 setState(() {
+      //                   valueChooseGender =
+      //                       data; // Update state variable directly
+      //                 });
+      //               },
+      //             ),
+      //           ),
+      //         ),
+      //         EditDetails(
+      //           label: "Date Of Birth :",
+      //           controller: _dateOfBirthController,
+      //           onchange: (data) {
+      //             dateOfBirth = data;
+      //           },
+      //           hintText: 'Enter Date Of Birth',
+      //         ),
+      //         EditDetails(
+      //           label: "Address :",
+      //           controller: _addressController,
+      //           onchange: (data) {
+      //             address = data;
+      //           },
+      //           hintText: 'Enter Address',
+      //         ),
+      //         SliverToBoxAdapter(
+      //           child: CustomDropdownButton(
+      //             addDropdownButton: AddDropdownButton(
+      //               label: "Blood Type :",
+      //               hint: getOwnerModel.bloodType,
+      //               items: bloodTypeOptions,
+      //               value: valueChooseBloodType,
+      //               onChanged: (data) {
+      //                 setState(() {
+      //                   valueChooseBloodType = data;
+      //                 });
+      //               },
+      //             ),
+      //           ),
+      //         ),
+      //         EditDetails(
+      //           label: "National ID :",
+      //           controller: _nationalIdController,
+      //           onchange: (data) {
+      //             nationalId = data;
+      //           },
+      //           readonly: true,
+      //           hintText: 'Enter National ID',
+      //         ),
+      //         SliverToBoxAdapter(
+      //           child: CustomDropdownButton(
+      //             addDropdownButton: AddDropdownButton(
+      //               label: "Marital Status :",
+      //               hint: getOwnerModel.maritalStatus,
+      //               items: maritalStatusOptions,
+      //               value: valueChooseMaritalStatus,
+      //               onChanged: (data) {
+      //                 setState(() {
+      //                   valueChooseMaritalStatus = data;
+      //                 });
+      //               },
+      //             ),
+      //           ),
+      //         ),
+      //         EditDetails(
+      //           label: "Job :",
+      //           controller: _jobController,
+      //           onchange: (data) {
+      //             job = data;
+      //           },
+      //           hintText: 'Enter Job',
+      //         ),
+      //         EditDetails(
+      //           label: "Relative Phone :",
+      //           controller: _relativePhoneController,
+      //           onchange: (data) {
+      //             relativePhone = data;
+      //           },
+      //           hintText: 'Enter Relative Phone',
+      //         ),
+      //         EditDetails(
+      //           label: "Relative Relation :",
+      //           controller: _relativeRelationController,
+      //           onchange: (data) {
+      //             relativeRelation = data;
+      //           },
+      //           hintText: 'Enter Relative Relation',
+      //         ),
+      //         EditDetails(
+      //           label: "User Code :",
+      //           controller: _userCodeController,
+      //           onchange: (data) {
+      //             code = data;
+      //           },
+      //           readonly: true,
+      //           hintText: 'Enter User Code',
+      //         ),
+      //         EditDetails(
+      //           label: "User Email :",
+      //           controller: _userEmailController,
+      //           onchange: (data) {
+      //             email = data;
+      //           },
+      //           hintText: 'Enter User Email',
+      //         ),
+      //         EditDetails(
+      //           label: "User Password :",
+      //           controller: _userPasswordController,
+      //           onchange: (data) {
+      //             password = data;
+      //           },
+      //           hintText: 'Enter User Password',
+      //         ),
+      //         EditDetails(
+      //           label: "User Role :",
+      //           controller: _userRoleController,
+      //           onchange: (data) {
+      //             role = data;
+      //           },
+      //           readonly: true,
+      //           hintText: 'Enter User Role',
+      //         ),
+      //         EditDetails(
+      //           label: "User Phone :",
+      //           controller: _userPhoneNumberController,
+      //           onchange: (data) {
+      //             phone = data;
+      //           },
+      //           hintText: 'Enter User Phone',
+      //         ),
+      //         SliverToBoxAdapter(
+      //           child: Padding(
+      //             padding: const EdgeInsets.only(top: 5),
+      //             child: Row(
+      //               children: [
+      //                 Text(
+      //                   "Enabled :",
+      //                   style: TextStyle(
+      //                     fontSize: 19,
+      //                     color: kPrimaryColor,
+      //                   ),
+      //                 ),
+      //                 SizedBox(width: 10),
+      //                 Radio<bool>(
+      //                   value: true,
+      //                   groupValue: enabled,
+      //                   onChanged: (value) {
+      //                     setState(() {
+      //                       enabled = value;
+      //                     });
+      //                   },
+      //                 ),
+      //                 Text(
+      //                   'True',
+      //                   style: TextStyle(fontSize: 16),
+      //                 ),
+      //                 SizedBox(width: 20),
+      //                 Radio<bool>(
+      //                   value: false,
+      //                   groupValue: enabled,
+      //                   onChanged: (value) {
+      //                     setState(() {
+      //                       enabled = value;
+      //                     });
+      //                   },
+      //                 ),
+      //                 Text(
+      //                   'False',
+      //                   style: TextStyle(fontSize: 16),
+      //                 ),
+      //               ],
+      //             ),
+      //           ),
+      //         ),
+      //         SliverToBoxAdapter(
+      //           child: SaveButton(
+      //             onPressed: () {
+      //               if (_formKey.currentState!.validate()) {
+      //                 _formKey.currentState!.save();
+      //                 submitData(context);
+      //               }
+      //             },
+      //             text: "Save",
+      //           ),
+      //         ),
+      //       ],
+      //     ),
+      //   ),
+      // ),
     );
   }
 

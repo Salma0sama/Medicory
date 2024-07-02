@@ -9,14 +9,18 @@ class LabPrescriptions {
   Future<List<GetPrescriptionModel>> getLabPrescriptions(String url) async {
     try {
       Response response = await dio.get(url);
-      List<dynamic> data = response.data as List<dynamic>;
-      List<GetPrescriptionModel> prescriptions = data.map((json) {
-        return GetPrescriptionModel.fromJson(json as Map<String, dynamic>);
-      }).toList();
-      return prescriptions;
+      if (response.statusCode == 200) {
+        List<dynamic> data = response.data as List<dynamic>;
+        List<GetPrescriptionModel> prescriptions = data.map((json) {
+          return GetPrescriptionModel.fromJson(json as Map<String, dynamic>);
+        }).toList();
+        return prescriptions;
+      } else {
+        throw Exception('Failed to load prescriptions');
+      }
     } catch (e) {
-      print(e);
-      return [];
+      print("Error fetching prescriptions: $e");
+      return []; // Return empty list in case of error
     }
   }
 
