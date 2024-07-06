@@ -1,9 +1,9 @@
 class GetOwnerSearch {
   final int id;
-  final String fullName;
-  final bool isEnabled;
+  String fullName;
+  bool isEnabled;
 
-  const GetOwnerSearch({
+  GetOwnerSearch({
     required this.id,
     required this.fullName,
     required this.isEnabled,
@@ -20,8 +20,8 @@ class GetOwnerSearch {
 
 class GetClinicSearch {
   final int clinicId;
-  final String clinicName;
-  final bool enabled;
+  String clinicName;
+  bool enabled;
 
   GetClinicSearch({
     required this.clinicId,
@@ -40,8 +40,8 @@ class GetClinicSearch {
 
 class GetAdminSearch {
   final int id;
-  final String adminName;
-  final bool enabled;
+  String adminName;
+  bool enabled;
 
   GetAdminSearch({
     required this.id,
@@ -49,19 +49,19 @@ class GetAdminSearch {
     required this.enabled,
   });
 
-  factory GetAdminSearch.fromJson(json) {
+  factory GetAdminSearch.fromJson(Map<String, dynamic> json) {
     return GetAdminSearch(
-      id: json['id'] as int,
-      adminName: json['adminName'] as String? ?? '',
-      enabled: json['enabled'] as bool,
+      id: json['id'],
+      adminName: json['adminName'],
+      enabled: json['enabled'],
     );
   }
 }
 
 class GetPharmacySearch {
   final int pharmacyId;
-  final String pharmacyName;
-  final bool enabled;
+  String pharmacyName;
+  bool enabled;
 
   GetPharmacySearch({
     required this.pharmacyId,
@@ -80,8 +80,8 @@ class GetPharmacySearch {
 
 class GetDoctorSearch {
   final int doctorId;
-  final String doctorName;
-  final bool enabled;
+  String doctorName;
+  bool enabled;
 
   GetDoctorSearch({
     required this.doctorId,
@@ -100,8 +100,8 @@ class GetDoctorSearch {
 
 class GetHospitalSearch {
   final int hospitalId;
-  final String hospitalName;
-  final bool enabled;
+  String hospitalName;
+  bool enabled;
 
   GetHospitalSearch({
     required this.hospitalId,
@@ -120,8 +120,8 @@ class GetHospitalSearch {
 
 class GetLabSearch {
   final int labId;
-  final String labName;
-  final bool enabled;
+  String labName;
+  bool enabled;
 
   GetLabSearch({
     required this.labId,

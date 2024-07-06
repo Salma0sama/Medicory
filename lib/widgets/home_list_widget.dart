@@ -10,13 +10,18 @@ class HomeList extends StatelessWidget {
     return Column(
       children: [
         SizedBox(
-          height: 1,
+          height: 5,
         ),
         GestureDetector(
           onTap: prescription.onTap,
           child: Container(
-            height: 80,
-            color: kPrimaryColor,
+            decoration: BoxDecoration(
+              color: kPrimaryColor,
+              borderRadius: BorderRadius.all(
+                Radius.circular(16),
+              ),
+            ),
+            height: 75,
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Row(
@@ -53,9 +58,6 @@ class HomeList extends StatelessWidget {
               ),
             ),
           ),
-        ),
-        SizedBox(
-          height: 5,
         ),
       ],
     );

@@ -1,6 +1,6 @@
 class GetHospitalModel {
   final int id;
-  final String name;
+  String name;
   final String googleMapsLink;
   final String address;
   final String code;
@@ -8,7 +8,7 @@ class GetHospitalModel {
   final String password;
   final String role;
   final List<String> userPhoneNumbers;
-  final bool enabled;
+  bool enabled;
 
   GetHospitalModel({
     required this.id,
@@ -31,7 +31,7 @@ class GetHospitalModel {
       address: json['address'] as String,
       code: json['code'] as String,
       email: json['email'] as String,
-      password: json['password'] as String,
+      password: json['password'] ?? '',
       role: json['role'] as String,
       userPhoneNumbers: List<String>.from(json['userPhoneNumbers'] as List),
       enabled: json['enabled'] as bool,

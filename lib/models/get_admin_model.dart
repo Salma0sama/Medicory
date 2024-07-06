@@ -1,7 +1,7 @@
 class GetAdminModel {
   final int id;
-  final String firstName;
-  final String lastName;
+  String firstName;
+  String lastName;
   final String maritalStatus;
   final String gender;
   final String code;
@@ -9,7 +9,7 @@ class GetAdminModel {
   final String password;
   final String role;
   final List<String> userPhoneNumbers;
-  final bool enabled;
+  bool enabled;
 
   GetAdminModel({
     required this.id,
@@ -34,7 +34,7 @@ class GetAdminModel {
       gender: json['gender'] as String,
       code: json['code'] as String,
       email: json['email'] as String,
-      password: json['password'] as String,
+      password: json['password'] ?? '',
       role: json['role'] as String,
       userPhoneNumbers: (json['userPhoneNumbers'] as List<dynamic>)
           .map((phone) => phone.toString())

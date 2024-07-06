@@ -17,7 +17,7 @@ class BuildRow extends StatelessWidget {
           Text(
             rowData.label,
             style: TextStyle(
-              fontSize: 19,
+              fontSize: 18,
               fontWeight: FontWeight.w500,
               // fontWeight: FontWeight.bold,
               color: kPrimaryColor,
@@ -27,7 +27,7 @@ class BuildRow extends StatelessWidget {
             child: Text(
               rowData.value.toString(),
               style: TextStyle(
-                fontSize: 19,
+                fontSize: 18,
                 color: kPrimaryColor,
               ),
               maxLines: 3,

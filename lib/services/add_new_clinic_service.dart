@@ -1,9 +1,8 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:medicory/models/add_new_clinic_model.dart';
 
 class AddNewClinicService {
-  Future<AddNewClinicModel> addNewClinic({
+  Future<bool> addNewClinic({
     required String name,
     required String googleMapsLink,
     required String address,
@@ -33,9 +32,10 @@ class AddNewClinicService {
     );
 
     if (response.statusCode == 201) {
-      return AddNewClinicModel.fromJson(jsonDecode(response.body));
+      return true;
     } else {
-      throw Exception("Failed to add clinic");
+      throw Exception(
+          "Failed to add Clinic ${response.statusCode} and body: ${response.body}");
     }
   }
 }

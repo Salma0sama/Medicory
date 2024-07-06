@@ -1,8 +1,8 @@
 class GetDoctorModel {
   final int id;
-  final String firstName;
-  final String middleName;
-  final String lastName;
+  String firstName;
+  String middleName;
+  String lastName;
   final String specialization;
   final String licenceNumber;
   final String nationalId;
@@ -13,7 +13,7 @@ class GetDoctorModel {
   final String password;
   final String role;
   final List<String> userPhoneNumbers;
-  final bool enabled;
+  bool enabled;
 
   GetDoctorModel({
     required this.id,
@@ -46,7 +46,7 @@ class GetDoctorModel {
       gender: json['gender'] as String,
       code: json['code'] as String,
       email: json['email'] as String,
-      password: json['password'] as String,
+      password: json['password'] ?? '',
       role: json['role'] as String,
       userPhoneNumbers: List<String>.from(json['userPhoneNumbers'] as List),
       enabled: json['enabled'] as bool,

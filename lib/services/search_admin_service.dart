@@ -33,11 +33,12 @@ class SearchAdmin {
     try {
       Response response = await dio.get(url);
       dynamic jsonData = response.data;
+
       if (jsonData is List) {
         return jsonData
             .map((ownerJson) => GetAdminSearch.fromJson(ownerJson))
             .toList();
-      } else if (jsonData is Map) {
+      } else if (jsonData is Map<String, dynamic>) {
         GetAdminSearch owner = GetAdminSearch.fromJson(jsonData);
         return [owner];
       } else {
@@ -57,6 +58,14 @@ class SearchAdmin {
     } catch (e) {
       print(e);
       return [];
+    }
+  }
+
+  Future<void> deleteAdmin(String url) async {
+    try {
+      await dio.delete(url);
+    } catch (e) {
+      print(e);
     }
   }
 }

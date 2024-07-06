@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:medicory/models/add_new_owner_model.dart';
 
 class AddNewOwnerService {
-  Future<AddNewOwnerModel> addNewOwner({
+  Future<bool> addNewOwner({
     required String firstName,
     required String middleName,
     required String lastName,
@@ -40,7 +40,7 @@ class AddNewOwnerService {
     );
 
     if (response.statusCode == 201) {
-      return AddNewOwnerModel.fromJson(jsonDecode(response.body));
+      return true;
     } else {
       throw Exception("Failed to add owner");
     }

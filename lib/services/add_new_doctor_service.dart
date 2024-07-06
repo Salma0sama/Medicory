@@ -1,15 +1,13 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:medicory/models/add_new_doctor_model.dart';
 
 class AddNewDoctorService {
-  Future<AddNewDoctorModel> addNewDoctor({
+  Future<bool> addNewDoctor({
     required String firstName,
     required String middleName,
     required String lastName,
     required String specialization,
     required String licenceNumber,
-    // required int nationalId,
     required String nationalId,
     required String maritalStatus,
     required String gender,
@@ -40,9 +38,10 @@ class AddNewDoctorService {
     );
 
     if (response.statusCode == 201) {
-      return AddNewDoctorModel.fromJson(jsonDecode(response.body));
+      return true;
     } else {
-      throw Exception("Failed to add doctor");
+      throw Exception(
+          "Failed to add doctor ${response.statusCode} and body: ${response.body}");
     }
   }
 }

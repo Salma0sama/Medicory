@@ -1,9 +1,8 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:medicory/models/get_lab_model.dart';
 
 class EditLabService {
-  Future<GetLabModel> EditLab({
+  Future<bool> EditLab({
     required int id,
     required String name,
     required String googleMapsLink,
@@ -11,7 +10,7 @@ class EditLabService {
     required String ownerName,
     required String code,
     required String email,
-    required String password,
+    required String? password,
     required String role,
     required List<String> userPhoneNumbers,
     required bool enabled,
@@ -36,8 +35,8 @@ class EditLabService {
       body: jsonEncode(labData),
     );
 
-    if (response.statusCode == 201) {
-      return GetLabModel.fromJson(jsonDecode(response.body));
+    if (response.statusCode == 200) {
+      return true;
     } else {
       throw Exception(
           "Failed to edit lab ${response.statusCode} with ${response.body}");

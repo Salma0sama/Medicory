@@ -1,6 +1,6 @@
 class GetLabModel {
   final int id;
-  final String name;
+  String name;
   final String googleMapsLink;
   final String address;
   final String ownerName;
@@ -9,7 +9,7 @@ class GetLabModel {
   final String password;
   final String role;
   final List<String> userPhoneNumbers;
-  final bool enabled;
+  bool enabled;
 
   GetLabModel({
     required this.id,
@@ -34,7 +34,7 @@ class GetLabModel {
       ownerName: json['ownerName'] as String,
       code: json['code'] as String,
       email: json['email'] as String,
-      password: json['password'] as String,
+      password: json['password'] ?? '',
       role: json['role'] as String,
       userPhoneNumbers:
           (json['userPhoneNumbers'] as List<dynamic>).cast<String>(),

@@ -1,9 +1,8 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:medicory/models/get_pharmacy_model.dart';
 
 class EditPharmacyService {
-  Future<GetPharmacyModel> EditPharmacy({
+  Future<bool> EditPharmacy({
     required int id,
     required String name,
     required String googleMapsLink,
@@ -11,7 +10,7 @@ class EditPharmacyService {
     required String ownerName,
     required String code,
     required String email,
-    required String password,
+    required String? password,
     required String role,
     required List<String> userPhoneNumbers,
     required bool enabled,
@@ -36,8 +35,8 @@ class EditPharmacyService {
       body: jsonEncode(pharmacyData),
     );
 
-    if (response.statusCode == 201) {
-      return GetPharmacyModel.fromJson(jsonDecode(response.body));
+    if (response.statusCode == 200) {
+      return true;
     } else {
       throw Exception(
           "Failed to edit pharmacy ${response.statusCode} with ${response.body}");

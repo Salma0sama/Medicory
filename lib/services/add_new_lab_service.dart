@@ -1,9 +1,8 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:medicory/models/add_new_lab_model.dart';
 
 class AddNewLabService {
-  Future<AddNewLabModel> addNewLab({
+  Future<bool> addNewLab({
     required String name,
     required String googleMapsLink,
     required String address,
@@ -31,9 +30,10 @@ class AddNewLabService {
     );
 
     if (response.statusCode == 201) {
-      return AddNewLabModel.fromJson(jsonDecode(response.body));
+      return true;
     } else {
-      throw Exception("Failed to add lab");
+      throw Exception(
+          "Failed to add lab ${response.statusCode} and body: ${response.body}");
     }
   }
 }

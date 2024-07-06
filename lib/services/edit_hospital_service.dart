@@ -1,16 +1,15 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:medicory/models/get_hospital_model.dart';
 
 class EditHospitalService {
-  Future<GetHospitalModel> EditHospital({
+  Future<bool> EditHospital({
     required int id,
     required String name,
     required String googleMapsLink,
     required String address,
     required String code,
     required String email,
-    required String password,
+    required String? password,
     required String role,
     required List<String> userPhoneNumbers,
     required bool enabled,
@@ -34,8 +33,8 @@ class EditHospitalService {
       body: jsonEncode(HospitalData),
     );
 
-    if (response.statusCode == 201) {
-      return GetHospitalModel.fromJson(jsonDecode(response.body));
+    if (response.statusCode == 200) {
+      return true;
     } else {
       throw Exception(
           "Failed to edit hospital ${response.statusCode} with ${response.body}");

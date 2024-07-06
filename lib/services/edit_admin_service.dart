@@ -1,9 +1,8 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:medicory/models/get_admin_model.dart';
 
 class EditAdminService {
-  Future<GetAdminModel> EditAdmin({
+  Future<bool> EditAdmin({
     required int id,
     required String firstName,
     required String lastName,
@@ -11,7 +10,7 @@ class EditAdminService {
     required String gender,
     required String code,
     required String email,
-    required String password,
+    required String? password,
     required String role,
     required List<String> userPhoneNumbers,
     required bool enabled,
@@ -36,8 +35,8 @@ class EditAdminService {
       body: jsonEncode(adminData),
     );
 
-    if (response.statusCode == 201) {
-      return GetAdminModel.fromJson(jsonDecode(response.body));
+    if (response.statusCode == 200) {
+      return true;
     } else {
       throw Exception(
           "Failed to edit admin ${response.statusCode} with ${response.body}");

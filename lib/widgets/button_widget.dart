@@ -15,7 +15,7 @@ class _ButtonState extends State<Button> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 15, top: 16),
+      padding: const EdgeInsets.only(bottom: 18),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -31,7 +31,7 @@ class _ButtonState extends State<Button> {
             child: Text(
               widget.text,
               style: TextStyle(
-                fontSize: 19,
+                fontSize: 18,
                 color: kTextColor,
               ),
             ),

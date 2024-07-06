@@ -78,7 +78,7 @@ class RelativePhoneNumber {
 class UserDetail {
   final String code;
   final String email;
-  final String password;
+  final String? password;
   final String role;
   final List<UserPhoneNumber> userPhoneNumbers;
   final bool enabled;
@@ -96,7 +96,7 @@ class UserDetail {
     return UserDetail(
       code: json['code'] as String,
       email: json['email'] as String,
-      password: json['password'] as String,
+      password: json['password'] ?? '',
       role: json['role'] as String,
       userPhoneNumbers: (json['userPhoneNumbers'] as List)
           .map((dynamic item) => UserPhoneNumber.fromJson(item))
