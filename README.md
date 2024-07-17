@@ -19,6 +19,8 @@ ADMIN :
 
 https://github.com/user-attachments/assets/2d12d95f-3ce5-4334-b60b-849180aa727e
 
+LAB :
+
 https://github.com/user-attachments/assets/10fc25b8-7d80-4cbb-b9a4-0311504e2e08
 
 https://github.com/user-attachments/assets/a1bc0ee1-7716-46c3-a6c1-bba3f6cd4c0e
