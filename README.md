@@ -26,3 +26,8 @@ https://github.com/user-attachments/assets/10fc25b8-7d80-4cbb-b9a4-0311504e2e08
 PHARMACY :
 
 https://github.com/user-attachments/assets/a1bc0ee1-7716-46c3-a6c1-bba3f6cd4c0e
+
+EMERGENCY :
+
+![emergency2](https://github.com/user-attachments/assets/2dd76c26-d40b-46a9-a830-bad4371bda10)
+![emergency1](https://github.com/user-attachments/assets/46df08bb-a413-4f17-a00d-df970fff91cc)
