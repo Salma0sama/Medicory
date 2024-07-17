@@ -23,4 +23,6 @@ LAB :
 
 https://github.com/user-attachments/assets/10fc25b8-7d80-4cbb-b9a4-0311504e2e08
 
+PHARMACY :
+
 https://github.com/user-attachments/assets/a1bc0ee1-7716-46c3-a6c1-bba3f6cd4c0e
